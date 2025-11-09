@@ -14,12 +14,12 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium">
+              <div className="inline-block px-4 py-2 bg-emerald-50 text-emerald-600 rounded-full text-sm font-medium">
                 Built for Micro Businesses
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Inventory Made
-                <span className="text-blue-600"> Simple</span>
+                <span className="text-emerald-600"> Simple</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
                 Manage your stock, track sales, and grow your business with our
@@ -59,7 +59,7 @@ const Hero = () => {
           </div>
 
           <div className="relative">
-            <div className="bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-2xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+            <div className="bg-gradient-to-br from-emerald-400 via-emerald-500 to-teal-600 rounded-2xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300">
               <div className="bg-white rounded-xl p-6 space-y-4">
                 <div className="flex items-center justify-between pb-4 border-b border-gray-200">
                   <h3 className="font-semibold text-gray-900">

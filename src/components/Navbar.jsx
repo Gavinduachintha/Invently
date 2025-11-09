@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">I</span>
             </div>
             <span className="text-xl font-bold text-gray-900">Invently</span>
@@ -30,7 +30,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
+                className="text-gray-600 hover:text-emerald-600 transition-colors font-medium"
               >
                 {link.name}
               </a>
@@ -59,7 +59,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="block py-2 text-gray-600 hover:text-blue-600 transition-colors font-medium"
+                className="block py-2 text-gray-600 hover:text-emerald-600 transition-colors font-medium"
                 onClick={toggleMenu}
               >
                 {link.name}

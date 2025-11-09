@@ -12,13 +12,13 @@ const Button = ({
 
   const variants = {
     primary:
-      "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-sm hover:shadow-md",
+      "bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500 shadow-sm hover:shadow-md",
     secondary:
       "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500",
     ghost:
       "text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:ring-gray-500",
     white:
-      "bg-white text-blue-600 hover:bg-gray-50 focus:ring-white shadow-sm hover:shadow-md",
+      "bg-white text-emerald-600 hover:bg-gray-50 focus:ring-white shadow-sm hover:shadow-md",
   };
 
   const sizes = {

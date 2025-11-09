@@ -4,12 +4,13 @@ A modern, responsive landing page for an inventory management SaaS application t
 
 ## 🎨 Color Theme
 
-The landing page uses a professional blue-based color scheme:
+The landing page uses a fresh, modern **emerald and teal** color scheme:
 
-- **Primary Blue**: `#2563EB` (blue-600) - CTAs, buttons, accents
-- **Light Blue**: `#EFF6FF` (blue-50) - Backgrounds, highlights
+- **Primary Emerald**: `#059669` (emerald-600) - CTAs, buttons, main accents
+- **Secondary Teal**: `#0d9488` (teal-600) - Gradients, secondary accents
+- **Light Emerald**: `#ECFDF5` (emerald-50) - Backgrounds, highlights
 - **Dark Gray**: `#111827` (gray-900) - Text, footer
-- **Accent Colors**: Green, Orange, Purple for feature icons
+- **Accent Colors**: Emerald, Teal, Orange, Purple, Rose, Amber for feature icons
 
 ## 📁 Project Structure
 
