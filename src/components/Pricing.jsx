@@ -8,7 +8,7 @@ const Pricing = () => {
       price: "0",
       description: "Perfect for trying out Invently",
       features: [
-        "Up to 100 products",
+        "Up to 50 products",
         "Basic reports",
         "Email support",
         "Mobile access",
@@ -19,10 +19,10 @@ const Pricing = () => {
     },
     {
       name: "Business",
-      price: "29",
+      price: "5",
       description: "Best for growing businesses",
       features: [
-        "Unlimited products",
+        "500 products",
         "Advanced analytics",
         "Priority support",
         "Mobile access",
@@ -35,10 +35,11 @@ const Pricing = () => {
     },
     {
       name: "Enterprise",
-      price: "79",
+      price: "10",
       description: "For larger operations",
       features: [
         "Everything in Business",
+        "Unlimited products",
         "Unlimited users",
         "Custom integrations",
         "Dedicated support",

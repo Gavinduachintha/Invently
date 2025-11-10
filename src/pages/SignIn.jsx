@@ -1,0 +1,135 @@
+import { useState } from "react";
+import { Mail, Lock, ArrowRight } from "lucide-react";
+import AuthLayout from "../components/auth/AuthLayout";
+import Input from "../components/ui/Input";
+import Button from "../components/ui/Button";
+import Checkbox from "../components/ui/Checkbox";
+import Divider from "../components/ui/Divider";
+import SocialLogin from "../components/auth/SocialLogin";
+
+const SignIn = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newErrors = validate();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    console.log("Sign in with:", formData);
+    // Add your sign-in logic here
+  };
+
+  return (
+    <AuthLayout
+      title="Welcome Back"
+      subtitle="Sign in to your Invently account"
+    >
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Input
+          label="Email Address"
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          value={formData.email}
+          onChange={handleChange}
+          error={errors.email}
+          required
+          icon={<Mail className="w-5 h-5" />}
+        />
+
+        <Input
+          label="Password"
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          value={formData.password}
+          onChange={handleChange}
+          error={errors.password}
+          required
+          icon={<Lock className="w-5 h-5" />}
+        />
+
+        <div className="flex items-center justify-between">
+          <Checkbox
+            label="Remember me"
+            name="rememberMe"
+            checked={formData.rememberMe}
+            onChange={handleChange}
+          />
+          <a
+            href="#"
+            className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+          >
+            Forgot password?
+          </a>
+        </div>
+
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          fullWidth
+          icon={<ArrowRight className="w-5 h-5" />}
+        >
+          Sign In
+        </Button>
+
+        <Divider text="or continue with" />
+
+        <SocialLogin />
+
+        <p className="text-center text-sm text-gray-600">
+          Don't have an account?{" "}
+          <a
+            href="/signup"
+            className="text-emerald-600 hover:text-emerald-700 font-medium"
+          >
+            Sign up for free
+          </a>
+        </p>
+      </form>
+    </AuthLayout>
+  );
+};
+
+export default SignIn;

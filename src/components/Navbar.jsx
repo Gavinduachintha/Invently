@@ -1,9 +1,11 @@
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useToggle } from "../hooks/useToggle";
 import Button from "./ui/Button";
 
 const Navbar = () => {
   const [isOpen, toggleMenu] = useToggle(false);
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Features", href: "#features" },
@@ -11,6 +13,18 @@ const Navbar = () => {
     { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
+
+  const handleSignIn = () => {
+    navigate("/signin");
+  };
+
+  const handleGetStarted = () => {
+    navigate("/signup");
+  };
+
+  const handleDashboard = () => {
+    navigate("/dashboard");
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
@@ -39,8 +53,15 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost">Sign In</Button>
-            <Button variant="primary">Get Started</Button>
+            <Button variant="ghost" onClick={handleSignIn}>
+              Sign In
+            </Button>
+            <Button variant="primary" onClick={handleGetStarted}>
+              Get Started
+            </Button>
+            <Button variant="secondary" onClick={handleDashboard}>
+              Dashboard
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -66,11 +87,14 @@ const Navbar = () => {
               </a>
             ))}
             <div className="pt-4 space-y-2">
-              <Button variant="ghost" fullWidth>
+              <Button variant="ghost" fullWidth onClick={handleSignIn}>
                 Sign In
               </Button>
-              <Button variant="primary" fullWidth>
+              <Button variant="primary" fullWidth onClick={handleGetStarted}>
                 Get Started
+              </Button>
+              <Button variant="secondary" fullWidth onClick={handleDashboard}>
+                Dashboard
               </Button>
             </div>
           </div>
