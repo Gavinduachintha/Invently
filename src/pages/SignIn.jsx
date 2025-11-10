@@ -7,6 +7,7 @@ import Checkbox from "../components/ui/Checkbox";
 import Divider from "../components/ui/Divider";
 import SocialLogin from "../components/auth/SocialLogin";
 import { Client, Account } from "appwrite";
+import { useNavigate } from "react-router-dom";
 
 const client = new Client()
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Your project ID
@@ -19,8 +20,10 @@ const SignIn = () => {
     password: "",
     rememberMe: false,
   });
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -54,15 +57,21 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
-      const result = await account.createEmailPasswordSession({
-        email: formData.email,
-        password: formData.password,
-      });
-      console.log(result);
+      const result = await account.createEmailPasswordSession(
+        formData.email,
+        formData.password
+      );
+      console.log("Login successful:", result);
+      navigate("/dashboard");
     } catch (error) {
       console.log(error.message);
+      if (error.code === 401) {
+        setErrors({ general: "Invalid email or password" });
+      } else {
+        setErrors({ general: "An error occurred. Please try again." });
+      }
     }
   };
 

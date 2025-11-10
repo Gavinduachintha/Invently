@@ -6,12 +6,13 @@ import Button from "../components/ui/Button";
 import Checkbox from "../components/ui/Checkbox";
 import Divider from "../components/ui/Divider";
 import SocialLogin from "../components/auth/SocialLogin";
-import { Client, Account, ID } from "appwrite";
+import { Client, Account, ID, Databases, Permission, Role } from "appwrite";
 
 const client = new Client()
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Your project ID
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT); // Your API Endpoint
 const account = new Account(client);
+const databases = new Databases(client);
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -57,6 +58,19 @@ const SignUp = () => {
         formData.password, // password
         formData.fullName // name (optional)
       );
+
+      const result = await databases.createDocument(
+      "69114e2e003d3109db3f", // your database ID
+      "shop_owners",           // your table ID
+      user.$id,                // document ID same as user ID
+      {
+        ownerId: user.$id,
+        email: formData.email,
+        name: formData.fullName,
+        businessName: formData.businessName,
+        registerOn: new Date().toISOString(),
+      }
+    );
       console.log(user);
     } catch (e) {
       console.error(e);
