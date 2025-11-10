@@ -26,6 +26,10 @@ const Navbar = () => {
     navigate("/dashboard");
   };
 
+  const handleWaitlist = () => {
+    navigate("/waitlist");
+  };
+
   return (
     <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
@@ -53,14 +57,14 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" onClick={handleSignIn}>
+            <Button variant="ghost" size="sm" onClick={handleWaitlist}>
+              Join Waitlist
+            </Button>
+            <Button variant="ghost" size="sm" onClick={handleSignIn}>
               Sign In
             </Button>
-            <Button variant="primary" onClick={handleGetStarted}>
+            <Button variant="primary" size="sm" onClick={handleGetStarted}>
               Get Started
-            </Button>
-            <Button variant="secondary" onClick={handleDashboard}>
-              Dashboard
             </Button>
           </div>
 
@@ -87,14 +91,14 @@ const Navbar = () => {
               </a>
             ))}
             <div className="pt-4 space-y-2">
+              <Button variant="ghost" fullWidth onClick={handleWaitlist}>
+                Join Waitlist
+              </Button>
               <Button variant="ghost" fullWidth onClick={handleSignIn}>
                 Sign In
               </Button>
               <Button variant="primary" fullWidth onClick={handleGetStarted}>
                 Get Started
-              </Button>
-              <Button variant="secondary" fullWidth onClick={handleDashboard}>
-                Dashboard
               </Button>
             </div>
           </div>

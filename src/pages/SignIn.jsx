@@ -8,6 +8,7 @@ import Divider from "../components/ui/Divider";
 import SocialLogin from "../components/auth/SocialLogin";
 import { Client, Account } from "appwrite";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const client = new Client()
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Your project ID
@@ -64,7 +65,10 @@ const SignIn = () => {
         formData.password
       );
       console.log("Login successful:", result);
-      navigate("/dashboard");
+      toast.success("Signed in successfully!");
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 500);
     } catch (error) {
       console.log(error.message);
       if (error.code === 401) {
@@ -80,6 +84,7 @@ const SignIn = () => {
       title="Welcome Back"
       subtitle="Sign in to your Invently account"
     >
+      <toast />
       <form onSubmit={handleSubmit} className="space-y-6">
         <Input
           label="Email Address"

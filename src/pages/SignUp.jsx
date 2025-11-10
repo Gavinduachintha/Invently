@@ -7,7 +7,7 @@ import Checkbox from "../components/ui/Checkbox";
 import Divider from "../components/ui/Divider";
 import SocialLogin from "../components/auth/SocialLogin";
 import { Client, Account, ID, Databases, Permission, Role } from "appwrite";
-
+import { useNavigate } from "react-router-dom";
 const client = new Client()
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Your project ID
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT); // Your API Endpoint
@@ -15,6 +15,8 @@ const account = new Account(client);
 const databases = new Databases(client);
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fullName: "",
     businessName: "",
@@ -25,8 +27,10 @@ const SignUp = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
+    
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -50,7 +54,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const user = await account.create(
         ID.unique(), // userId
@@ -71,6 +74,7 @@ const SignUp = () => {
         registerOn: new Date().toISOString(),
       }
     );
+    navigate("/signin");
       console.log(user);
     } catch (e) {
       console.error(e);

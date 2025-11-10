@@ -1,7 +1,10 @@
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import Button from "./ui/Button";
 
 const CTA = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
@@ -18,11 +21,15 @@ const CTA = () => {
               variant="white"
               size="lg"
               icon={<ArrowRight className="w-5 h-5" />}
+              onClick={() => navigate("/signup")}
             >
               Start Your Free Trial
             </Button>
-            <button className="text-white hover:text-blue-100 transition-colors font-medium underline">
-              Schedule a Demo
+            <button
+              className="text-white hover:text-blue-100 transition-colors font-medium underline"
+              onClick={() => navigate("/waitlist")}
+            >
+              Join Waitlist
             </button>
           </div>
           <p className="text-emerald-50 text-sm mt-6">

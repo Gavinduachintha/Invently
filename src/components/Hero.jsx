@@ -1,7 +1,25 @@
 import { ArrowRight, CheckCircle } from "lucide-react";
 import Button from "./ui/Button";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
+const notify = () => {
+  toast("Coming Soon!", {
+    icon: "🤭",
+    position: "top-center",
+    style: {
+      borderRadius: "8px",
+      background: "#ffffff",
+      color: "#000",
+    },
+  });
+};
 
 const Hero = () => {
+  const navigate = useNavigate();
+  const navigateToWaitlist = () => {
+    navigate("/waitlist");
+  };
   const features = [
     "Track inventory in real-time",
     "Simple & intuitive interface",
@@ -42,15 +60,17 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
+                onClick={navigateToWaitlist}
                 variant="primary"
                 size="lg"
                 icon={<ArrowRight className="w-5 h-5" />}
               >
-                Start Free Trial
+                Join the waitlist
               </Button>
-              <Button variant="secondary" size="lg">
+              <Button variant="secondary" size="lg" onClick={notify}>
                 Watch Demo
               </Button>
+              <Toaster />
             </div>
 
             <p className="text-sm text-gray-500">
