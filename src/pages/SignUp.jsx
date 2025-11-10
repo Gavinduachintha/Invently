@@ -6,6 +6,12 @@ import Button from "../components/ui/Button";
 import Checkbox from "../components/ui/Checkbox";
 import Divider from "../components/ui/Divider";
 import SocialLogin from "../components/auth/SocialLogin";
+import { Client, Account, ID } from "appwrite";
+
+const client = new Client()
+  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Your project ID
+  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT); // Your API Endpoint
+const account = new Account(client);
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -34,49 +40,29 @@ const SignUp = () => {
   const validate = () => {
     const newErrors = {};
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = "Full name is required";
-    }
-
-    if (!formData.businessName.trim()) {
-      newErrors.businessName = "Business name is required";
-    }
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters";
-    }
-
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Please confirm your password";
-    } else if (formData.password !== formData.confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
-    }
-
-    if (!formData.agreeToTerms) {
-      newErrors.agreeToTerms = "You must agree to the terms and conditions";
     }
 
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
+    try {
+      const user = await account.create(
+        ID.unique(), // userId
+        formData.email, // email
+        formData.password, // password
+        formData.fullName // name (optional)
+      );
+      console.log(user);
+    } catch (e) {
+      console.error(e);
     }
 
-    console.log("Sign up with:", formData);
+    // console.log("Sign up with:", formData);
     // Add your sign-up logic here
   };
 

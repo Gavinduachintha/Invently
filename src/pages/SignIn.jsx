@@ -6,6 +6,12 @@ import Button from "../components/ui/Button";
 import Checkbox from "../components/ui/Checkbox";
 import Divider from "../components/ui/Divider";
 import SocialLogin from "../components/auth/SocialLogin";
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Your project ID
+  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT); // Your API Endpoint
+const account = new Account(client);
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -46,17 +52,18 @@ const SignIn = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
+    try {
+      const result = await account.createEmailPasswordSession({
+        email: formData.email,
+        password: formData.password,
+      });
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
     }
-
-    console.log("Sign in with:", formData);
-    // Add your sign-in logic here
   };
 
   return (
