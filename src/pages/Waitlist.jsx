@@ -10,6 +10,12 @@ import {
 } from "lucide-react";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
+import { Client, Databases, ID, Permission, Role } from "appwrite";
+
+const client = new Client()
+  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Your project ID
+  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT); // Your API Endpoint
+const databases = new Databases(client);
 
 const Waitlist = () => {
   const navigate = useNavigate();
@@ -26,11 +32,24 @@ const Waitlist = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Add your functionality here later
     console.log("Form submitted:", formData);
-    setSubmitted(true);
+
+    try {
+      const result = await databases.createDocument(
+        import.meta.env.VITE_APPWRITE_DATABASE_ID,
+        "waitlist_users",
+        ID.unique(),
+        {
+          email: formData.email,
+          
+        }
+      );
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Error creating document:", error);
+    }
   };
 
   if (submitted) {
@@ -150,8 +169,6 @@ const Waitlist = () => {
                 Join Waitlist
               </Button>
             </form>
-
-            
           </div>
         </div>
       </div>

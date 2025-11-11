@@ -17,14 +17,14 @@ const CTA = () => {
             Invently. Start your free trial today—no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
+            {/* <Button
               variant="white"
               size="lg"
               icon={<ArrowRight className="w-5 h-5" />}
               onClick={() => navigate("/signup")}
             >
               Start Your Free Trial
-            </Button>
+            </Button> */}
             <button
               className="text-white hover:text-blue-100 transition-colors font-medium underline"
               onClick={() => navigate("/waitlist")}
@@ -33,7 +33,7 @@ const CTA = () => {
             </button>
           </div>
           <p className="text-emerald-50 text-sm mt-6">
-            ✓ 14-day free trial ✓ No credit card needed ✓ Setup in minutes
+             ✓ No credit card needed ✓ Setup in minutes
           </p>
         </div>
       </div>
