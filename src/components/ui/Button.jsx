@@ -6,19 +6,21 @@ const Button = ({
   fullWidth = false,
   onClick,
   className = "",
+  type = "button",
+  disabled = false,
 }) => {
   const baseStyles =
-    "inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variants = {
     primary:
-      "bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500 shadow-sm hover:shadow-md",
+      "bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500 shadow-sm hover:shadow-md disabled:hover:bg-emerald-600",
     secondary:
-      "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500",
+      "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500 disabled:hover:bg-gray-100",
     ghost:
-      "text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:ring-gray-500",
+      "text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:ring-gray-500 disabled:hover:bg-transparent",
     white:
-      "bg-white text-emerald-600 hover:bg-gray-50 focus:ring-white shadow-sm hover:shadow-md",
+      "bg-white text-emerald-600 hover:bg-gray-50 focus:ring-white shadow-sm hover:shadow-md disabled:hover:bg-white",
   };
 
   const sizes = {
@@ -31,7 +33,9 @@ const Button = ({
 
   return (
     <button
+      type={type}
       onClick={onClick}
+      disabled={disabled}
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${widthClass} ${className}`}
     >
       {children}

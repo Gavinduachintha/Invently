@@ -43,7 +43,6 @@ const Waitlist = () => {
         ID.unique(),
         {
           email: formData.email,
-          
         }
       );
       setSubmitted(true);
