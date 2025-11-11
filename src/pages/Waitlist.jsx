@@ -14,9 +14,7 @@ import Input from "../components/ui/Input";
 const Waitlist = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    fullName: "",
     email: "",
-    businessName: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
@@ -94,7 +92,7 @@ const Waitlist = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className=" bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
@@ -103,7 +101,7 @@ const Waitlist = () => {
               </div>
               <span className="font-bold text-gray-900 text-xl">Invently</span>
             </div>
-            <Button variant="ghost" size="sm" onClick={() => navigate("/")}>
+            <Button variant="primary" size="sm" onClick={() => navigate("/")}>
               Back to Home
             </Button>
           </div>
@@ -132,17 +130,6 @@ const Waitlist = () => {
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <Input
-                label="Full Name"
-                type="text"
-                name="fullName"
-                placeholder="John Doe"
-                value={formData.fullName}
-                onChange={handleChange}
-                required
-                icon={<User className="w-5 h-5" />}
-              />
-
-              <Input
                 label="Email Address"
                 type="email"
                 name="email"
@@ -151,16 +138,6 @@ const Waitlist = () => {
                 onChange={handleChange}
                 required
                 icon={<Mail className="w-5 h-5" />}
-              />
-
-              <Input
-                label="Business Name (Optional)"
-                type="text"
-                name="businessName"
-                placeholder="My Amazing Shop"
-                value={formData.businessName}
-                onChange={handleChange}
-                icon={<Building className="w-5 h-5" />}
               />
 
               <Button
@@ -174,49 +151,7 @@ const Waitlist = () => {
               </Button>
             </form>
 
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <p className="text-sm text-gray-600 text-center">
-                Already have an account?{" "}
-                <button
-                  onClick={() => navigate("/signin")}
-                  className="text-emerald-600 hover:text-emerald-700 font-medium"
-                >
-                  Sign in
-                </button>
-              </p>
-            </div>
-          </div>
-
-          {/* Benefits */}
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: "🚀",
-                title: "Early Access",
-                description: "Be first to try new features",
-              },
-              {
-                icon: "💰",
-                title: "Special Pricing",
-                description: "Exclusive launch discounts",
-              },
-              {
-                icon: "🎯",
-                title: "Priority Support",
-                description: "Get help when you need it",
-              },
-            ].map((benefit, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="text-3xl mb-3">{benefit.icon}</div>
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  {benefit.title}
-                </h3>
-                <p className="text-sm text-gray-600">{benefit.description}</p>
-              </div>
-            ))}
+            
           </div>
         </div>
       </div>

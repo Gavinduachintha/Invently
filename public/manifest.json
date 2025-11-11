@@ -1,0 +1,17 @@
+{
+  "name": "Invently",
+  "short_name": "Invently",
+  "description": "Simple inventory management for micro businesses",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "/invently-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
