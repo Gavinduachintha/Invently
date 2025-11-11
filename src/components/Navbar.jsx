@@ -64,13 +64,13 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          {/* <button
             onClick={toggleMenu}
             className="md:hidden p-2.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          </button> */}
         </div>
 
         {/* Mobile Menu */}
