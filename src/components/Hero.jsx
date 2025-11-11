@@ -30,14 +30,8 @@ const Hero = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    console.log("=== Waitlist Submission Debug ===");
-    console.log("Email:", email);
-    console.log("Project ID:", import.meta.env.VITE_APPWRITE_PROJECT_ID);
-    console.log("Endpoint:", import.meta.env.VITE_APPWRITE_ENDPOINT);
-    console.log("Database ID:", import.meta.env.VITE_APPWRITE_DATABASE_ID);
-
     try {
-      const result = await databases.createDocument(
+      await databases.createDocument(
         import.meta.env.VITE_APPWRITE_DATABASE_ID,
         "waitlist_users",
         ID.unique(),
@@ -45,7 +39,6 @@ const Hero = () => {
           email: email,
         }
       );
-      console.log("Success! Document created:", result);
       setSubmitted(true);
       toast.success("You're on the waitlist! 🎉", {
         position: "top-center",
@@ -53,12 +46,7 @@ const Hero = () => {
       });
       setEmail("");
     } catch (error) {
-      console.error("=== Full Error Details ===");
-      console.error("Error object:", error);
-      console.error("Error message:", error.message);
-      console.error("Error code:", error.code);
-      console.error("Error type:", error.type);
-      
+      console.error("Error:", error);
       toast.error("Failed to join. Please try again.", {
         position: "top-center",
       });
