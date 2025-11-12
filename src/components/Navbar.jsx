@@ -55,22 +55,25 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            {/* <Button variant="ghost" size="sm" onClick={handleSignIn}>
+            <Button variant="ghost" size="sm" onClick={handleSignIn}>
               Sign In
             </Button>
             <Button variant="primary" size="sm" onClick={handleGetStarted}>
               Get Started
-            </Button> */}
+            </Button>
+            <Button className="ml-2" variant="secondary" size="sm" onClick={handleDashboard}>
+              Dashboard
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          {/* <button
+          <button
             onClick={toggleMenu}
             className="md:hidden p-2.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button> */}
+          </button>
         </div>
 
         {/* Mobile Menu */}

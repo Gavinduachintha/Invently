@@ -4,6 +4,9 @@ import Sidebar from "../components/dashboard/Sidebar";
 import Header from "../components/dashboard/Header";
 import DashboardHome from "../components/dashboard/DashboardHome";
 import ProductsView from "../components/dashboard/ProductsView";
+import SuppliersView from "../components/dashboard/SuppliersView";
+
+
 
 const Dashboard = () => {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -34,12 +37,7 @@ const Dashboard = () => {
           />
         );
       case "suppliers":
-        return (
-          <PlaceholderView
-            title="Suppliers"
-            description="Manage your supplier contacts"
-          />
-        );
+        return <SuppliersView />;
       case "settings":
         return (
           <PlaceholderView
