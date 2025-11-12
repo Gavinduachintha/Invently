@@ -63,7 +63,7 @@ const SignUp = () => {
       );
 
       const result = await databases.createDocument(
-      "69114e2e003d3109db3f", // your database ID
+      import.meta.env.VITE_APPWRITE_DATABASE_ID, // your database ID
       "shop_owners",           // your table ID
       user.$id,                // document ID same as user ID
       {

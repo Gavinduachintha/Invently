@@ -4,41 +4,32 @@ import { Client, Databases } from "appwrite";
 const client = new Client()
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID)
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT);
+
 const databases = new Databases(client);
-const useSuppliers = () => {
-  const [suppliers, setSuppliers] = useState([]);
+
+const useProducts = () => {
+  const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getSuppliers = async () => {
+    const getProducts = async () => {
       try {
-        console.log("Database ID:", import.meta.env.VITE_APPWRITE_DATABASE_ID);
-        console.log(
-          "Collection ID:",
-          import.meta.env.VITE_APPWRITE_SUPPLIERS_COLLECTION_ID
-        );
-
         const result = await databases.listDocuments(
           import.meta.env.VITE_APPWRITE_DATABASE_ID,
-
-          "suppliers"
+          "products"
         );
-
-        console.log("Suppliers result:", result);
-        console.log("Suppliers documents:", result.documents);
-        setSuppliers(result.documents);
+        setProducts(result.documents);
       } catch (error) {
-        console.error("Error fetching suppliers:", error);
         setError(error.message);
       } finally {
         setLoading(false);
       }
     };
-    getSuppliers();
+    getProducts();
   }, []);
 
-  return { suppliers, error, loading };
+  return { products, error, loading };
 };
 
-export default useSuppliers;
+export default useProducts;
