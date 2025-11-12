@@ -37,7 +37,6 @@ const SuppliersView = () => {
 
   console.log("filteredSuppliers:", filteredSuppliers);
 
-  // console.log("showModal:", showModal); // Debug log
 
   return (
     <>

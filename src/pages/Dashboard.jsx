@@ -6,6 +6,7 @@ import DashboardHome from "../components/dashboard/DashboardHome";
 import ProductsView from "../components/dashboard/ProductsView";
 import SuppliersView from "../components/dashboard/SuppliersView";
 import SettingsView from "../components/dashboard/SettingsView";
+import StockCheckView from "../components/dashboard/StockCheckView";
 
 const Dashboard = () => {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -29,12 +30,7 @@ const Dashboard = () => {
           />
         );
       case "stock":
-        return (
-          <PlaceholderView
-            title="Stock Check"
-            description="Quick inventory overview"
-          />
-        );
+        return <StockCheckView />;
       case "suppliers":
         return <SuppliersView />;
       case "settings":
