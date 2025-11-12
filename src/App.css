@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@plugin "daisyui";
 /* Custom styles for the landing page */
 html {
   scroll-behavior: smooth;
