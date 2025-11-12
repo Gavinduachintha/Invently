@@ -12,11 +12,13 @@ import { useState, useEffect, use } from "react";
 import { Client, Databases } from "appwrite";
 import useSuppliers from "../../hooks/useSuppliers";
 import Addsupplier from "../forms/Addsupplier";
+import Warningcard from "../ui/Warningcard";
 
 const SuppliersView = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { suppliers, error, loading } = useSuppliers();
   const [showModal, setShowModal] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
 
   const filteredSuppliers = suppliers.filter(
     (supplier) =>
@@ -25,7 +27,7 @@ const SuppliersView = () => {
       supplier.products?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  console.log("showModal:", showModal); // Debug log
+  // console.log("showModal:", showModal); // Debug log
 
   return (
     <>
@@ -34,6 +36,13 @@ const SuppliersView = () => {
         <div className="fixed inset-0 bg-black/10 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg w-full max-w-2xl m-4">
             <Addsupplier onClose={() => setShowModal(false)} />
+          </div>
+        </div>
+      )}
+       {showWarning && (
+        <div className="fixed inset-0 bg-gray-500/70 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg  max-w-2xl m-4">
+            <Warningcard onClose={() => setShowWarning(false)} />
           </div>
         </div>
       )}
@@ -205,6 +214,7 @@ const SuppliersView = () => {
                             <Edit className="w-4 h-4" />
                           </button>
                           <button
+                            onClick={() => setShowWarning(true)}
                             className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                             title="Delete supplier"
                           >

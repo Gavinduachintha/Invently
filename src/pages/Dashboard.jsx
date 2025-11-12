@@ -5,8 +5,7 @@ import Header from "../components/dashboard/Header";
 import DashboardHome from "../components/dashboard/DashboardHome";
 import ProductsView from "../components/dashboard/ProductsView";
 import SuppliersView from "../components/dashboard/SuppliersView";
-
-
+import SettingsView from "../components/dashboard/SettingsView";
 
 const Dashboard = () => {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -39,12 +38,7 @@ const Dashboard = () => {
       case "suppliers":
         return <SuppliersView />;
       case "settings":
-        return (
-          <PlaceholderView
-            title="Settings"
-            description="Configure your shop settings"
-          />
-        );
+        return <SettingsView />;
       default:
         return <DashboardHome />;
     }
