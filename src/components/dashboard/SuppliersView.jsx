@@ -37,7 +37,6 @@ const SuppliersView = () => {
 
   console.log("filteredSuppliers:", filteredSuppliers);
 
-
   return (
     <>
       {/* Modal */}
@@ -66,7 +65,7 @@ const SuppliersView = () => {
             </p>
           </div>
           <button
-            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-sm"
+            className="flex items-center gap-2 px-4 py-2 bg-[#8458B3] text-white rounded-lg hover:bg-[#a28089] transition-colors shadow-sm"
             onClick={() => setShowModal(true)}
           >
             <Plus className="w-5 h-5" />
@@ -83,8 +82,8 @@ const SuppliersView = () => {
 
         {/* Error State */}
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <p className="text-red-800">Error: {error}</p>
+          <div className="bg-[#a28089]/10 border border-[#a28089]/20 rounded-lg p-4">
+            <p className="text-[#a28089]">Error: {error}</p>
           </div>
         )}
 
@@ -99,8 +98,8 @@ const SuppliersView = () => {
                     {suppliers.length}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <Users className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-[#a0d2eb]/30 rounded-lg flex items-center justify-center">
+                  <Users className="w-6 h-6 text-[#8458B3]" />
                 </div>
               </div>
             </div>
@@ -108,12 +107,12 @@ const SuppliersView = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-600">Active Suppliers</p>
-                  <p className="text-2xl font-bold text-green-600 mt-1">
+                  <p className="text-2xl font-bold text-[#8458B3] mt-1">
                     {suppliers.filter((s) => s.status === "active").length}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <Users className="w-6 h-6 text-green-600" />
+                <div className="w-12 h-12 bg-[#d0bdf4]/50 rounded-lg flex items-center justify-center">
+                  <Users className="w-6 h-6 text-[#8458B3]" />
                 </div>
               </div>
             </div>
@@ -143,7 +142,7 @@ const SuppliersView = () => {
                 placeholder="Search suppliers by name, contact, or products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8458B3] focus:border-transparent outline-none"
               />
             </div>
           </div>
@@ -192,8 +191,8 @@ const SuppliersView = () => {
                       >
                         <td className="px-6 py-4">
                           <div className="flex items-center">
-                            <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                              <Users className="w-5 h-5 text-emerald-600" />
+                            <div className="w-10 h-10 bg-[#d0bdf4]/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <Users className="w-5 h-5 text-[#8458B3]" />
                             </div>
                             <div className="ml-3">
                               <p className="text-sm font-medium text-gray-900">
@@ -226,7 +225,7 @@ const SuppliersView = () => {
                           <span
                             className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                               supplier.status === "active"
-                                ? "bg-green-100 text-green-800"
+                                ? "bg-[#d0bdf4]/50 text-[#8458B3]"
                                 : "bg-gray-100 text-gray-800"
                             }`}
                           >

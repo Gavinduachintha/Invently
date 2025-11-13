@@ -86,64 +86,74 @@ const SignIn = () => {
     >
       <toast />
       <form onSubmit={handleSubmit} className="space-y-6">
-        <Input
-          label="Email Address"
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          value={formData.email}
-          onChange={handleChange}
-          error={errors.email}
-          required
-          icon={<Mail className="w-5 h-5" />}
-        />
+        {/* Split Layout Container */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Left Side - Inputs */}
+          <div className="space-y-5">
+            <Input
+              label="Email Address"
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              value={formData.email}
+              onChange={handleChange}
+              error={errors.email}
+              required
+              icon={<Mail className="w-5 h-5" />}
+            />
 
-        <Input
-          label="Password"
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-          value={formData.password}
-          onChange={handleChange}
-          error={errors.password}
-          required
-          icon={<Lock className="w-5 h-5" />}
-        />
+            <Input
+              label="Password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={handleChange}
+              error={errors.password}
+              required
+              icon={<Lock className="w-5 h-5" />}
+            />
 
-        <div className="flex items-center justify-between">
-          <Checkbox
-            label="Remember me"
-            name="rememberMe"
-            checked={formData.rememberMe}
-            onChange={handleChange}
-          />
-          <a
-            href="#"
-            className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
-          >
-            Forgot password?
-          </a>
+            <div className="flex items-center justify-between">
+              <Checkbox
+                label="Remember me"
+                name="rememberMe"
+                checked={formData.rememberMe}
+                onChange={handleChange}
+              />
+              <a
+                href="#"
+                className="text-sm text-[#8458B3] hover:text-[#a28089] font-medium"
+              >
+                Forgot?
+              </a>
+            </div>
+          </div>
+
+          {/* Right Side - Buttons */}
+          <div className="flex flex-col justify-center space-y-4">
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              fullWidth
+              icon={<ArrowRight className="w-5 h-5" />}
+            >
+              Sign In
+            </Button>
+
+            <Divider text="or" />
+
+            <SocialLogin />
+          </div>
         </div>
 
-        <Button
-          type="submit"
-          variant="primary"
-          size="lg"
-          fullWidth
-          icon={<ArrowRight className="w-5 h-5" />}
-        >
-          Sign In
-        </Button>
-
-        <Divider text="or continue with" />
-
-        <SocialLogin />
-
-        <p className="text-center text-sm text-gray-600">
+        {/* Bottom Section */}
+        <p className="text-center text-sm text-gray-600 pt-4 border-t border-gray-200">
           Don't have an account?{" "}
           <a
             href="/signup"
-            className="text-emerald-600 hover:text-emerald-700 font-medium"
+            className="text-[#8458B3] hover:text-[#a28089] font-medium"
           >
             Sign up for free
           </a>

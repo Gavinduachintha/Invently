@@ -1,11 +1,11 @@
 const StatCard = ({ title, value, change, icon, color = "emerald" }) => {
   const colorClasses = {
-    emerald: "bg-emerald-100 text-emerald-600",
-    teal: "bg-teal-100 text-teal-600",
-    blue: "bg-blue-100 text-blue-600",
-    orange: "bg-orange-100 text-orange-600",
-    red: "bg-red-100 text-red-600",
-    purple: "bg-purple-100 text-purple-600",
+    emerald: "bg-[#d0bdf4] text-[#8458B3]",
+    teal: "bg-[#a0d2eb]/30 text-[#8458B3]",
+    blue: "bg-[#a0d2eb]/30 text-[#8458B3]",
+    orange: "bg-[#a28089]/20 text-[#a28089]",
+    red: "bg-[#a28089]/20 text-[#a28089]",
+    purple: "bg-[#8458B3] text-white",
   };
 
   const isPositive = change && parseFloat(change) > 0;
@@ -22,9 +22,9 @@ const StatCard = ({ title, value, change, icon, color = "emerald" }) => {
               <span
                 className={`font-medium ${
                   isPositive
-                    ? "text-green-600"
+                    ? "text-[#8458B3]"
                     : isNegative
-                      ? "text-red-600"
+                      ? "text-[#a28089]"
                       : "text-gray-600"
                 }`}
               >

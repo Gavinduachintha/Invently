@@ -42,13 +42,13 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
           {isOpen ? (
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-[#8458B3] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">I</span>
               </div>
               <span className="font-bold text-gray-900 text-lg">Invently</span>
             </div>
           ) : (
-            <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mx-auto">
+            <div className="w-8 h-8 bg-[#8458B3] rounded-lg flex items-center justify-center mx-auto">
               <span className="text-white font-bold text-sm">I</span>
             </div>
           )}
@@ -78,7 +78,7 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
                 onClick={() => onNavigate(item.id)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-600"
+                    ? "bg-[#e5eaf5] text-[#8458B3]"
                     : "text-gray-700 hover:bg-gray-50"
                 } ${!isOpen && "justify-center"}`}
               >

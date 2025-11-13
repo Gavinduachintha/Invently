@@ -30,7 +30,7 @@ const Header = ({ sidebarOpen, title = "Dashboard" }) => {
 
           {/* Profile */}
           <button className="flex items-center gap-3 hover:bg-gray-50 rounded-lg px-3 py-2 transition-colors">
-            <div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
+            <div className="w-9 h-9 bg-[#8458B3] rounded-full flex items-center justify-center">
               <User className="w-5 h-5 text-white" />
             </div>
             <div className="hidden md:block text-left">

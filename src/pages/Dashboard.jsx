@@ -78,8 +78,8 @@ const Dashboard = () => {
 const PlaceholderView = ({ title, description }) => (
   <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12">
     <div className="text-center">
-      <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-        <Package className="w-8 h-8 text-emerald-600" />
+      <div className="w-16 h-16 bg-[#e5eaf5] rounded-full flex items-center justify-center mx-auto mb-4">
+        <Package className="w-8 h-8 text-[#8458B3]" />
       </div>
       <h2 className="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
       <p className="text-gray-600 mb-4">{description}</p>

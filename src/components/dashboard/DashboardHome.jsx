@@ -104,12 +104,12 @@ const DashboardHome = () => {
                 <div
                   className={`w-8 h-8 rounded-lg ${
                     action.color === "emerald"
-                      ? "bg-emerald-100 text-emerald-600"
+                      ? "bg-[#d0bdf4] text-[#8458B3]"
                       : action.color === "blue"
-                        ? "bg-blue-100 text-blue-600"
+                        ? "bg-[#a0d2eb]/30 text-[#8458B3]"
                         : action.color === "orange"
-                          ? "bg-orange-100 text-orange-600"
-                          : "bg-teal-100 text-teal-600"
+                          ? "bg-[#a28089]/20 text-[#a28089]"
+                          : "bg-[#e5eaf5] text-[#8458B3]"
                   } flex items-center justify-center`}
                 >
                   <Icon className="w-4 h-4" />
@@ -151,7 +151,7 @@ const DashboardHome = () => {
                 >
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <CheckCircle className="w-4 h-4 text-[#8458B3]" />
                       <p className="font-medium text-gray-900">
                         {sale.product}
                       </p>
@@ -167,7 +167,7 @@ const DashboardHome = () => {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-bold text-emerald-600">{sale.amount}</p>
+                    <p className="font-bold text-[#8458B3]">{sale.amount}</p>
                   </div>
                 </div>
               ))}
@@ -180,7 +180,7 @@ const DashboardHome = () => {
           title="Stock Alert"
           subtitle="Items running low"
           action={
-            <span className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full font-medium">
+            <span className="text-xs bg-[#a28089]/20 text-[#a28089] px-2 py-1 rounded-full font-medium">
               {lowStockProducts.length} items
             </span>
           }
@@ -189,7 +189,7 @@ const DashboardHome = () => {
             {lowStockProducts.map((product, index) => (
               <div
                 key={index}
-                className="p-3 bg-red-50 border border-red-100 rounded-lg"
+                className="p-3 bg-[#a28089]/10 border border-[#a28089]/20 rounded-lg"
               >
                 <div className="flex items-start justify-between mb-2">
                   <p className="font-medium text-gray-900 text-sm">
@@ -198,8 +198,8 @@ const DashboardHome = () => {
                   <span
                     className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                       product.status === "Critical"
-                        ? "bg-red-200 text-red-800"
-                        : "bg-orange-200 text-orange-800"
+                        ? "bg-[#a28089]/30 text-[#a28089]"
+                        : "bg-[#d0bdf4]/50 text-[#8458B3]"
                     }`}
                   >
                     {product.status}
@@ -238,47 +238,47 @@ const DashboardHome = () => {
             </div>
             <div className="flex items-center justify-between py-3">
               <span className="text-gray-600">Best Selling</span>
-              <span className="font-bold text-emerald-600">Rice - 5kg</span>
+              <span className="font-bold text-[#8458B3]">Rice - 5kg</span>
             </div>
           </div>
         </Card>
 
         <Card title="Tips for Your Business" subtitle="Helpful suggestions">
           <div className="space-y-3">
-            <div className="p-3 bg-emerald-50 border border-emerald-100 rounded-lg">
+            <div className="p-3 bg-[#d0bdf4]/30 border border-[#d0bdf4] rounded-lg">
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-[#8458B3] mt-0.5" />
                 <div>
-                  <p className="font-medium text-emerald-900 text-sm">
+                  <p className="font-medium text-[#8458B3] text-sm">
                     Restock Low Items
                   </p>
-                  <p className="text-xs text-emerald-700 mt-1">
+                  <p className="text-xs text-gray-700 mt-1">
                     8 products need restocking soon
                   </p>
                 </div>
               </div>
             </div>
-            <div className="p-3 bg-blue-50 border border-blue-100 rounded-lg">
+            <div className="p-3 bg-[#a0d2eb]/20 border border-[#a0d2eb]/50 rounded-lg">
               <div className="flex items-start gap-2">
-                <Package className="w-5 h-5 text-blue-600 mt-0.5" />
+                <Package className="w-5 h-5 text-[#8458B3] mt-0.5" />
                 <div>
-                  <p className="font-medium text-blue-900 text-sm">
+                  <p className="font-medium text-[#8458B3] text-sm">
                     Update Prices
                   </p>
-                  <p className="text-xs text-blue-700 mt-1">
+                  <p className="text-xs text-gray-700 mt-1">
                     Check supplier prices for better margins
                   </p>
                 </div>
               </div>
             </div>
-            <div className="p-3 bg-orange-50 border border-orange-100 rounded-lg">
+            <div className="p-3 bg-[#e5eaf5] border border-[#d0bdf4]/50 rounded-lg">
               <div className="flex items-start gap-2">
-                <TrendingUp className="w-5 h-5 text-orange-600 mt-0.5" />
+                <TrendingUp className="w-5 h-5 text-[#8458B3] mt-0.5" />
                 <div>
-                  <p className="font-medium text-orange-900 text-sm">
+                  <p className="font-medium text-[#8458B3] text-sm">
                     Sales Growing!
                   </p>
-                  <p className="text-xs text-orange-700 mt-1">
+                  <p className="text-xs text-gray-700 mt-1">
                     Your sales are up 15% from last week
                   </p>
                 </div>

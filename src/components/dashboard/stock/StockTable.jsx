@@ -9,22 +9,22 @@ const StockTable = ({ products, loading }) => {
     if (quantity === 0) {
       return {
         label: "Out of Stock",
-        color: "text-red-600",
-        bgColor: "bg-red-100",
+        color: "text-[#a28089]",
+        bgColor: "bg-[#a28089]/20",
         icon: XCircle,
       };
     } else if (quantity <= threshold) {
       return {
         label: "Low Stock",
-        color: "text-yellow-600",
-        bgColor: "bg-yellow-100",
+        color: "text-[#a28089]",
+        bgColor: "bg-[#a0d2eb]/20",
         icon: AlertTriangle,
       };
     } else {
       return {
         label: "In Stock",
-        color: "text-green-600",
-        bgColor: "bg-green-100",
+        color: "text-[#8458B3]",
+        bgColor: "bg-[#d0bdf4]/50",
         icon: TrendingUp,
       };
     }
@@ -114,8 +114,8 @@ const StockTable = ({ products, loading }) => {
                   {/* Product */}
                   <td className="px-6 py-4">
                     <div className="flex items-center">
-                      <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Package className="w-5 h-5 text-emerald-600" />
+                      <div className="w-10 h-10 bg-[#d0bdf4]/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Package className="w-5 h-5 text-[#8458B3]" />
                       </div>
                       <div className="ml-3">
                         <p className="text-sm font-medium text-gray-900">
@@ -158,10 +158,10 @@ const StockTable = ({ products, loading }) => {
                       <div
                         className={`h-2 rounded-full transition-all ${
                           percentage <= 33
-                            ? "bg-red-500"
+                            ? "bg-[#a28089]"
                             : percentage <= 66
-                            ? "bg-yellow-500"
-                            : "bg-green-500"
+                              ? "bg-[#a0d2eb]"
+                              : "bg-[#8458B3]"
                         }`}
                         style={{ width: `${percentage}%` }}
                       ></div>

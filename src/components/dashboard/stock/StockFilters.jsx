@@ -1,6 +1,11 @@
 import { Search, Filter } from "lucide-react";
 
-const StockFilters = ({ searchQuery, setSearchQuery, statusFilter, setStatusFilter }) => {
+const StockFilters = ({
+  searchQuery,
+  setSearchQuery,
+  statusFilter,
+  setStatusFilter,
+}) => {
   const filterOptions = [
     { value: "all", label: "All Products", count: null },
     { value: "inStock", label: "In Stock", badge: "green" },
@@ -18,7 +23,7 @@ const StockFilters = ({ searchQuery, setSearchQuery, statusFilter, setStatusFilt
           placeholder="Search by product name, SKU, or category..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+          className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8458B3] focus:border-transparent outline-none"
         />
       </div>
 
@@ -34,7 +39,7 @@ const StockFilters = ({ searchQuery, setSearchQuery, statusFilter, setStatusFilt
             onClick={() => setStatusFilter(option.value)}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
               statusFilter === option.value
-                ? "bg-emerald-600 text-white shadow-sm"
+                ? "bg-[#8458B3] text-white shadow-sm"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
           >
@@ -43,10 +48,10 @@ const StockFilters = ({ searchQuery, setSearchQuery, statusFilter, setStatusFilt
               <span
                 className={`ml-2 w-2 h-2 rounded-full inline-block ${
                   option.badge === "green"
-                    ? "bg-green-400"
+                    ? "bg-[#8458B3]"
                     : option.badge === "yellow"
-                    ? "bg-yellow-400"
-                    : "bg-red-400"
+                      ? "bg-[#a0d2eb]"
+                      : "bg-[#a28089]"
                 }`}
               ></span>
             )}

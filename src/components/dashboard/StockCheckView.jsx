@@ -6,7 +6,8 @@ import StockFilters from "./stock/StockFilters";
 import StockTable from "./stock/StockTable";
 
 const StockCheckView = () => {
-  const { products, error, loading, stockStats, getProductsByStatus } = useStock();
+  const { products, error, loading, stockStats, getProductsByStatus } =
+    useStock();
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
@@ -35,12 +36,20 @@ const StockCheckView = () => {
 
   // Export stock data to CSV
   const handleExportCSV = () => {
-    const headers = ["Product Name", "SKU", "Category", "Quantity", "Price", "Total Value", "Status"];
+    const headers = [
+      "Product Name",
+      "SKU",
+      "Category",
+      "Quantity",
+      "Price",
+      "Total Value",
+      "Status",
+    ];
     const csvData = filteredProducts.map((product) => {
       const quantity = parseInt(product.quantity) || 0;
       const price = parseFloat(product.price) || 0;
       const threshold = parseInt(product.lowStockThreshold) || 10;
-      
+
       let status = "In Stock";
       if (quantity === 0) status = "Out of Stock";
       else if (quantity <= threshold) status = "Low Stock";
@@ -92,7 +101,7 @@ const StockCheckView = () => {
           <button
             onClick={handleExportCSV}
             disabled={filteredProducts.length === 0}
-            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-4 py-2 bg-[#8458B3] text-white rounded-lg hover:bg-[#a28089] transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Download className="w-4 h-4" />
             Export CSV
@@ -128,13 +137,14 @@ const StockCheckView = () => {
       {!loading && !error && (
         <div className="flex items-center justify-between">
           <p className="text-sm text-gray-600">
-            Showing <span className="font-semibold">{filteredProducts.length}</span>{" "}
-            of <span className="font-semibold">{products.length}</span> products
+            Showing{" "}
+            <span className="font-semibold">{filteredProducts.length}</span> of{" "}
+            <span className="font-semibold">{products.length}</span> products
           </p>
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+              className="text-sm text-[#8458B3] hover:text-[#a28089] font-medium"
             >
               Clear search
             </button>
