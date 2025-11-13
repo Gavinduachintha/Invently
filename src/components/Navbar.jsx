@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo */}
           <div className="flex items-center gap-2.5 group cursor-pointer">
-            <div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/30 transition-all duration-300">
+            <div className="w-9 h-9 bg-[#8458B3] rounded-xl flex items-center justify-center shadow-lg shadow-[#8458B3]/20 group-hover:shadow-[#8458B3]/30 transition-all duration-300">
               <span className="text-white font-bold text-xl">I</span>
             </div>
             <span className="text-xl font-bold text-gray-900 tracking-tight">
@@ -46,7 +46,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="px-4 py-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50/50 rounded-lg transition-all duration-200 font-medium text-sm"
+                className="px-4 py-2 text-gray-600 hover:text-[#8458B3] hover:bg-[#e5eaf5] rounded-lg transition-all duration-200 font-medium text-sm"
               >
                 {link.name}
               </a>
@@ -61,7 +61,12 @@ const Navbar = () => {
             <Button variant="primary" size="sm" onClick={handleGetStarted}>
               Get Started
             </Button>
-            <Button className="ml-2" variant="secondary" size="sm" onClick={handleDashboard}>
+            <Button
+              className="ml-2"
+              variant="secondary"
+              size="sm"
+              onClick={handleDashboard}
+            >
               Dashboard
             </Button>
           </div>
@@ -83,7 +88,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="block px-4 py-3 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50/50 rounded-lg transition-all duration-200 font-medium"
+                className="block px-4 py-3 text-gray-600 hover:text-[#8458B3] hover:bg-[#e5eaf5] rounded-lg transition-all duration-200 font-medium"
                 onClick={toggleMenu}
               >
                 {link.name}

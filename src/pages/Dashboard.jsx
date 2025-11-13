@@ -53,7 +53,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#e5eaf5]">
       <Sidebar
         currentPage={currentView}
         onNavigate={setCurrentView}

@@ -54,12 +54,12 @@ const Features = () => {
   ];
 
   const colorClasses = {
-    blue: "bg-emerald-100 text-emerald-600",
-    green: "bg-teal-100 text-teal-600",
-    orange: "bg-orange-100 text-orange-600",
-    purple: "bg-purple-100 text-purple-600",
-    red: "bg-rose-100 text-rose-600",
-    yellow: "bg-amber-100 text-amber-600",
+    blue: "bg-[#a0d2eb]/30 text-[#8458B3]",
+    green: "bg-[#d0bdf4]/30 text-[#8458B3]",
+    orange: "bg-[#e5eaf5] text-[#a28089]",
+    purple: "bg-[#d0bdf4] text-[#8458B3]",
+    red: "bg-[#a28089]/20 text-[#a28089]",
+    yellow: "bg-[#a0d2eb]/20 text-[#8458B3]",
   };
 
   return (

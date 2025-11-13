@@ -71,13 +71,13 @@ const Pricing = () => {
               key={index}
               className={`relative bg-white rounded-2xl shadow-lg p-8 ${
                 plan.popular
-                  ? "border-2 border-blue-500 scale-105"
+                  ? "border-2 border-[#8458B3] scale-105"
                   : "border border-gray-200"
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-[#8458B3] text-white px-4 py-1 rounded-full text-sm font-medium">
                     Most Popular
                   </span>
                 </div>
@@ -107,7 +107,7 @@ const Pricing = () => {
               <ul className="mt-8 space-y-4">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="w-5 h-5 text-[#8458B3] flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{feature}</span>
                   </li>
                 ))}

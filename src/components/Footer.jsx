@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Brand & Contact */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-[#8458B3] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">I</span>
               </div>
               <span className="text-xl font-bold text-white">Invently</span>
