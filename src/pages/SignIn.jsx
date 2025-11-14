@@ -66,8 +66,13 @@ const SignIn = () => {
       );
       console.log("Login successful:", result);
       toast.success("Signed in successfully!");
+      const user = await account.get();
+      console.log("User data:", user);
+      console.log("Login in as: ",user);
+      localStorage.setItem("user", JSON.stringify(user));
+      
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/dashboard",{state: { user }});
       }, 500);
     } catch (error) {
       console.log(error.message);
@@ -85,36 +90,44 @@ const SignIn = () => {
       subtitle="Sign in to your Invently account"
     >
       <toast />
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit}>
         {/* Split Layout Container */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Left Side - Inputs */}
-          <div className="space-y-5">
-            <Input
-              label="Email Address"
-              type="email"
-              name="email"
-              placeholder="you@example.com"
-              value={formData.email}
-              onChange={handleChange}
-              error={errors.email}
-              required
-              icon={<Mail className="w-5 h-5" />}
-            />
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Left Side - Input Fields */}
+          <div className="space-y-6 md:border-r md:border-gray-200 md:pr-8">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Account Details
+              </h3>
 
-            <Input
-              label="Password"
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleChange}
-              error={errors.password}
-              required
-              icon={<Lock className="w-5 h-5" />}
-            />
+              <div className="space-y-5">
+                <Input
+                  label="Email Address"
+                  type="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  error={errors.email}
+                  required
+                  icon={<Mail className="w-5 h-5" />}
+                />
 
-            <div className="flex items-center justify-between">
+                <Input
+                  label="Password"
+                  type="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  error={errors.password}
+                  required
+                  icon={<Lock className="w-5 h-5" />}
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between pt-2">
               <Checkbox
                 label="Remember me"
                 name="rememberMe"
@@ -123,41 +136,60 @@ const SignIn = () => {
               />
               <a
                 href="#"
-                className="text-sm text-[#8458B3] hover:text-[#a28089] font-medium"
+                className="text-sm text-[#8458B3] hover:text-[#a28089] font-medium transition-colors"
               >
-                Forgot?
+                Forgot password?
               </a>
             </div>
           </div>
 
-          {/* Right Side - Buttons */}
-          <div className="flex flex-col justify-center space-y-4">
-            <Button
-              type="submit"
-              variant="primary"
-              size="lg"
-              fullWidth
-              icon={<ArrowRight className="w-5 h-5" />}
-            >
-              Sign In
-            </Button>
+          {/* Right Side - Action Buttons */}
+          <div className="flex flex-col justify-center space-y-6 md:pl-4">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                Sign In Method
+              </h3>
 
-            <Divider text="or" />
+              <div className="space-y-4">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  fullWidth
+                  icon={<ArrowRight className="w-5 h-5" />}
+                >
+                  Sign In with Email
+                </Button>
 
-            <SocialLogin />
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-gray-200"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-4 bg-white text-gray-500">
+                      Or continue with
+                    </span>
+                  </div>
+                </div>
+
+                <SocialLogin />
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <p className="text-center text-sm text-gray-600 pt-4 border-t border-gray-200">
-          Don't have an account?{" "}
-          <a
-            href="/signup"
-            className="text-[#8458B3] hover:text-[#a28089] font-medium"
-          >
-            Sign up for free
-          </a>
-        </p>
+        {/* Bottom Section - Sign Up Link */}
+        <div className="mt-8 pt-6 border-t border-gray-200">
+          <p className="text-center text-sm text-gray-600">
+            Don't have an account?{" "}
+            <a
+              href="/signup"
+              className="text-[#8458B3] hover:text-[#a28089] font-semibold transition-colors"
+            >
+              Create a free account
+            </a>
+          </p>
+        </div>
       </form>
     </AuthLayout>
   );

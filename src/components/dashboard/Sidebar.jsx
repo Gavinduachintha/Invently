@@ -11,8 +11,16 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { Account, Client } from "appwrite";
+import { useNavigate } from "react-router-dom";
+const account = new Account(Client);
+const client = new Client()
+  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID)
+  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT);
 
 const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
+  const navigate = useNavigate();
+
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: Home },
     { id: "products", label: "My Products", icon: Package },
@@ -21,6 +29,16 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
     { id: "suppliers", label: "Suppliers", icon: Users },
     { id: "settings", label: "Settings", icon: Settings },
   ];
+
+  const handleLogout = async () => {
+    try {
+      await account.deleteSession("current");
+      localStorage.removeItem("user");
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
 
   return (
     <>
@@ -92,11 +110,12 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
         {/* User Section */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
           <button
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors ${
+            onClick={handleLogout}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-black hover:bg-red-400 transition-colors ${
               !isOpen && "justify-center"
             }`}
           >
-            <LogOut className="w-5 h-5 flex-shrink-0" />
+            <LogOut className="w-5 h-5 flex-shrink-0 " />
             {isOpen && <span className="font-medium">Logout</span>}
           </button>
         </div>

@@ -1,13 +1,13 @@
 import { Bell, Search, User } from "lucide-react";
 
-const Header = ({ sidebarOpen, title = "Dashboard" }) => {
+const Header = ({ sidebarOpen, title = "Dashboard", currentUser }) => {
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
       <div className="flex items-center justify-between px-6 py-4">
         {/* Title */}
         <div>
           <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
-          <p className="text-sm text-gray-600 mt-0.5">Welcome back, John!</p>
+          <p className="text-sm text-gray-600 mt-0.5">Welcome back, {currentUser?.name}!</p>
         </div>
 
         {/* Actions */}
@@ -34,7 +34,7 @@ const Header = ({ sidebarOpen, title = "Dashboard" }) => {
               <User className="w-5 h-5 text-white" />
             </div>
             <div className="hidden md:block text-left">
-              <p className="text-sm font-medium text-gray-900">John Doe</p>
+              <p className="text-sm font-medium text-gray-900">{currentUser?.name}</p>
               <p className="text-xs text-gray-600">Admin</p>
             </div>
           </button>

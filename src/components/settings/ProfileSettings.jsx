@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { User, Mail, Building, MapPin, Phone, Camera } from "lucide-react";
+import Button from "../ui/Button";
 
 const ProfileSettings = () => {
   const [formData, setFormData] = useState({
@@ -31,16 +32,19 @@ const ProfileSettings = () => {
         </h3>
         <div className="flex items-center gap-4">
           <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center">
-            <User className="w-10 h-10 text-emerald-600" />
+            <User className="w-10 h-10 text-purple-600" />
           </div>
           <div className="flex gap-3">
-            <button className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm font-medium">
+            <Button
+              className="px-4 py-2  text-white rounded-lg  transition-colors text-sm font-medium"
+              variant="primary"
+            >
               <Camera className="w-4 h-4 inline mr-2" />
               Upload Photo
-            </button>
-            <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium">
+            </Button>
+            <Button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg transition-colors text-sm font-medium">
               Remove
-            </button>
+            </Button>
           </div>
         </div>
         <p className="text-sm text-gray-500 mt-2">
@@ -175,12 +179,13 @@ const ProfileSettings = () => {
           >
             Cancel
           </button>
-          <button
-            type="submit"
-            className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
-          >
-            Save Changes
-          </button>
+          <Button
+          type="submit"
+              className="px-4 py-2  text-white rounded-lg  transition-colors text-sm font-medium"
+              variant="primary"
+            >
+              Save Changes
+            </Button>
         </div>
       </form>
     </div>

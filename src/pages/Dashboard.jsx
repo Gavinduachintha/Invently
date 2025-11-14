@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Package } from "lucide-react";
 import Sidebar from "../components/dashboard/Sidebar";
 import Header from "../components/dashboard/Header";
@@ -7,11 +7,37 @@ import ProductsView from "../components/dashboard/ProductsView";
 import SuppliersView from "../components/dashboard/SuppliersView";
 import SettingsView from "../components/dashboard/SettingsView";
 import StockCheckView from "../components/dashboard/StockCheckView";
+import { useLocation } from "react-router-dom";
+import { Client, Account } from "appwrite";
+
+const client = new Client()
+  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID)
+  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT);
+const account = new Account(client);
 
 const Dashboard = () => {
+  const { state } = useLocation();
+  const storedUser = localStorage.getItem("user");
+  const [user, setUser] = useState(
+    state?.user || (storedUser ? JSON.parse(storedUser) : null)
+  );
   const [currentView, setCurrentView] = useState("dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (!user) {
+        try {
+          const fetchedUser = await account.get();
+          setUser(fetchedUser);
+          localStorage.setItem("user", JSON.stringify(fetchedUser));
+        } catch (err) {
+          console.error("Failed to fetch user:", err);
+        }
+      }
+    };
+    fetchUser();
+  }, [user]);
   const toggleSidebar = () => {
     setSidebarOpen((prev) => !prev);
   };
@@ -66,7 +92,11 @@ const Dashboard = () => {
           sidebarOpen ? "lg:ml-64" : "lg:ml-20"
         } ml-0`}
       >
-        <Header sidebarOpen={sidebarOpen} title={getPageTitle()} />
+        <Header
+          sidebarOpen={sidebarOpen}
+          title={getPageTitle()}
+          currentUser={user}
+        />
 
         <main className="p-6">{renderView()}</main>
       </div>
