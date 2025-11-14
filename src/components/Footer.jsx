@@ -3,57 +3,46 @@ import { Mail, Github } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 px-6 py-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-8">
-          {/* Brand & Contact */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-[#8458B3] rounded-lg flex items-center justify-center">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          {/* Brand & Description */}
+          <div className="flex flex-col items-center md:items-start gap-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 bg-[#8458B3] rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-lg">I</span>
               </div>
               <span className="text-xl font-bold text-white">Invently</span>
             </div>
-            <div className="space-y-2 text-sm">
-              <a
-                href="mailto:gavindu.al@gmail.com"
-                className="hover:text-white transition-colors flex items-center gap-2"
-              >
-                <Mail className="w-4 h-4" />
-                <span>gavindu.al@gmail.com</span>
-              </a>
-              <a
-                href="https://github.com/Gavinduachintha"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors flex items-center gap-2"
-              >
-                <Github className="w-4 h-4" />
-                <span>@Gavinduachintha</span>
-              </a>
-            </div>
+            <p className="text-gray-400 text-sm max-w-xs text-center md:text-left">
+              Simple inventory management for small businesses.
+            </p>
           </div>
 
-          {/* Simple Links */}
-          <div className="flex gap-6 text-sm md:ml-auto">
-            <a href="#features" className="hover:text-white transition-colors">
-              Features
+          {/* Contact & Social */}
+          <div className="flex items-center gap-6">
+            <a
+              href="mailto:gavindu.al@gmail.com"
+              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+            >
+              <Mail className="w-4 h-4" />
+              <span>gavindu.al@gmail.com</span>
             </a>
-            <a href="#pricing" className="hover:text-white transition-colors">
-              Pricing
-            </a>
-            <a href="#privacy" className="hover:text-white transition-colors">
-              Privacy
-            </a>
-            <a href="#terms" className="hover:text-white transition-colors">
-              Terms
+            <a
+              href="https://github.com/Gavinduachintha"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="w-5 h-5" />
             </a>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="text-center mt-6 pt-6 border-t border-gray-800">
-          <p className="text-sm text-gray-400">
-            © 2025 Invently. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800 mt-8 pt-6">
+          <p className="text-center text-sm text-gray-500">
+            © {new Date().getFullYear()} Invently. All rights reserved.
           </p>
         </div>
       </div>

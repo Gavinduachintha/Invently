@@ -1,4 +1,12 @@
-import { ArrowRight, CheckCircle, Mail } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  Mail,
+  Package,
+  BarChart3,
+  Bell,
+  Smartphone,
+} from "lucide-react";
 import { useState } from "react";
 import Button from "./ui/Button";
 import toast, { Toaster } from "react-hot-toast";
@@ -8,18 +16,6 @@ const client = new Client()
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID)
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT);
 const databases = new Databases(client);
-
-const notify = () => {
-  toast("Coming Soon!", {
-    icon: "🤭",
-    position: "top-center",
-    style: {
-      borderRadius: "8px",
-      background: "#ffffff",
-      color: "#000",
-    },
-  });
-};
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -61,113 +57,179 @@ const Hero = () => {
   ];
 
   return (
-    <section className="pt-20 pb-16 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="inline-block px-4 py-2 bg-[#e5eaf5] text-[#8458B3] rounded-full text-sm font-medium">
-                Built for Micro Businesses
+    <section className="relative pt-20 pb-24 px-6 overflow-hidden">
+      <div className="min-h-screen w-full bg-[#f9fafb] absolute inset-0">
+        {/* Diagonal Fade Center Grid Background */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, #d1d5db 1px, transparent 1px),
+              linear-gradient(to bottom, #d1d5db 1px, transparent 1px)
+            `,
+            backgroundSize: "32px 32px",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
+            maskImage:
+              "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
+          }}
+        />
+      </div>
+
+      {/* Floating Icons Background */}
+      <div
+        className="absolute top-10 left-[5%] text-[#8458B3]/10 animate-float z-10"
+        style={{ animationDelay: "0s" }}
+      >
+        <Package className="w-20 h-20" />
+      </div>
+      <div
+        className="absolute top-1/3 right-[8%] text-[#8458B3]/10 animate-float z-10"
+        style={{ animationDelay: "2s" }}
+      >
+        <BarChart3 className="w-24 h-24" />
+      </div>
+      <div
+        className="absolute bottom-1/3 left-[10%] text-[#8458B3]/10 animate-float z-10"
+        style={{ animationDelay: "4s" }}
+      >
+        <Bell className="w-20 h-20" />
+      </div>
+      <div
+        className="absolute top-1/2 right-[5%] text-[#8458B3]/10 animate-float z-10"
+        style={{ animationDelay: "3s" }}
+      >
+        <Smartphone className="w-16 h-16" />
+      </div>
+      <div
+        className="absolute bottom-1/4 right-[15%] text-[#8458B3]/10 animate-float z-10"
+        style={{ animationDelay: "1s" }}
+      >
+        <Package className="w-20 h-20" />
+      </div>
+
+      <div className="max-w-5xl mx-auto relative z-10">
+        <div className="flex flex-col items-center justify-center min-h-[85vh]">
+          <div className="space-y-10 text-center">
+            {/* Badge */}
+            <div className="animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-100 border border-gray-200 text-gray-700 rounded-full text-sm font-semibold hover:bg-gray-200 transition-all duration-300">
+                <span className="w-2 h-2 bg-[#8458B3] rounded-full" />
+                Built for Small & Growing Businesses
               </div>
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Inventory Made
-                <span className="text-[#8458B3]"> Simple</span>
+            </div>
+
+            {/* Main Heading */}
+            <div className="space-y-6 animate-fade-in-up animation-delay-200">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight tracking-tight">
+                Inventory Management
+                <br />
+                <span className="text-[#8458B3]">Made Simple</span>
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Manage your stock, track sales, and grow your business with our
-                easy-to-use inventory management system designed specifically
-                for small retailers.
+              <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto font-light">
+                Take control of your stock with our intuitive platform.
+                <span className="font-medium text-gray-900">
+                  {" "}
+                  Track inventory, analyze sales,
+                </span>{" "}
+                and grow your business—all in one place.
               </p>
             </div>
 
-            <ul className="space-y-3">
+            {/* Feature Pills */}
+            <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up animation-delay-400">
               {features.map((feature, index) => (
-                <li
+                <div
                   key={index}
-                  className="flex items-center gap-3 text-gray-700"
+                  className="flex items-center gap-2.5 px-5 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 font-medium shadow-sm hover:border-[#8458B3] transition-all duration-300"
                 >
-                  <CheckCircle className="w-5 h-5 text-[#8458B3] flex-shrink-0" />
-                  <span>{feature}</span>
-                </li>
+                  <CheckCircle className="w-4 h-4 text-[#8458B3] flex-shrink-0" />
+                  <span className="text-sm">{feature}</span>
+                </div>
               ))}
-            </ul>
+            </div>
 
             {/* Waitlist Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="relative flex-1">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#8458B3] focus:border-[#8458B3] outline-none transition-all text-gray-900 placeholder:text-gray-400"
-                  />
+            <div className="animate-fade-in-up animation-delay-600">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-5 max-w-xl mx-auto"
+              >
+                <div className="flex flex-col sm:flex-row gap-3.5 p-2 bg-white rounded-2xl shadow-lg border border-gray-200">
+                  <div className="relative flex-1">
+                    <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your work email"
+                      required
+                      className="w-full pl-12 pr-4 py-4 bg-transparent rounded-xl focus:outline-none text-gray-900 placeholder:text-gray-400 text-base"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="lg"
+                    disabled={isLoading}
+                    icon={<ArrowRight className="w-5 h-5" />}
+                    className="sm:w-auto whitespace-nowrap"
+                  >
+                    {isLoading ? "Joining..." : "Join Waitlist"}
+                  </Button>
                 </div>
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  disabled={isLoading}
-                  icon={<ArrowRight className="w-5 h-5" />}
-                  className="sm:w-auto"
-                >
-                  {isLoading ? "Joining..." : "Join Waitlist"}
-                </Button>
-              </div>
-              {submitted && (
-                <p className="text-sm text-[#8458B3] font-medium">
-                  ✓ Thanks for joining! We'll notify you when we launch.
-                </p>
-              )}
-            </form>
 
-            <div className="flex gap-2 items-center">
-              <Button variant="secondary" size="md" onClick={notify}>
-                Watch Demo
-              </Button>
+                {submitted && (
+                  <div className="animate-fade-in">
+                    <p className="text-sm text-green-700 font-semibold flex items-center justify-center gap-2 bg-green-50 border border-green-200 rounded-lg py-3 px-4">
+                      <CheckCircle className="w-4 h-4" />
+                      Thanks for joining! We'll notify you when we launch.
+                    </p>
+                  </div>
+                )}
+
+                <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-gray-400" />
+                    <span>No credit card required</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-gray-400" />
+                    <span>14-day free trial</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-gray-400" />
+                    <span>Cancel anytime</span>
+                  </div>
+                </div>
+              </form>
             </div>
-            <Toaster />
 
-            <p className="text-sm text-gray-500">
-              No credit card required • Free 14-day trial • Cancel anytime
-            </p>
-          </div>
-
-          <div className="relative">
-            <div className="bg-[#8458B3] rounded-2xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300">
-              <div className="bg-white rounded-xl p-6 space-y-4">
-                <div className="flex items-center justify-between pb-4 border-b border-gray-200">
-                  <h3 className="font-semibold text-gray-900">
-                    Inventory Overview
-                  </h3>
-                  <div className="w-8 h-8 bg-[#e5eaf5] rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-[#8458B3]" />
-                  </div>
+            {/* Social Proof */}
+            <div className="pt-8 animate-fade-in-up animation-delay-800">
+              <p className="text-sm text-gray-500 mb-4">
+                Trusted by small businesses worldwide
+              </p>
+              <div className="flex items-center justify-center gap-2">
+                <div className="flex -space-x-2">
+                  {[...Array(5)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-10 h-10 rounded-full bg-gray-300 border-2 border-white shadow-sm"
+                    />
+                  ))}
                 </div>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                    <span className="text-sm text-gray-600">
-                      Total Products
-                    </span>
-                    <span className="font-bold text-gray-900">1,234</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-[#e5eaf5] rounded-lg">
-                    <span className="text-sm text-gray-600">In Stock</span>
-                    <span className="font-bold text-[#8458B3]">987</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-[#a0d2eb]/20 rounded-lg">
-                    <span className="text-sm text-gray-600">Low Stock</span>
-                    <span className="font-bold text-[#a28089]">23</span>
-                  </div>
-                </div>
+                <span className="text-sm font-medium text-gray-700 ml-2">
+                  Join <span className="text-[#8458B3] font-bold">500+</span>{" "}
+                  businesses
+                </span>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <Toaster position="top-center" />
     </section>
   );
 };
