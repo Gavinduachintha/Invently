@@ -13,10 +13,10 @@ import {
 } from "lucide-react";
 import { Account, Client } from "appwrite";
 import { useNavigate } from "react-router-dom";
-const account = new Account(Client);
 const client = new Client()
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID)
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT);
+const account = new Account(client);
 
 const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
   const navigate = useNavigate();
@@ -33,8 +33,7 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
   const handleLogout = async () => {
     try {
       await account.deleteSession("current");
-      localStorage.removeItem("user");
-      navigate("/login");
+      navigate("/signin");
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -59,14 +58,16 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
         {/* Logo Section */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
           {isOpen ? (
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#8458B3] rounded-lg flex items-center justify-center">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 bg-[#8458B3] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">I</span>
               </div>
-              <span className="font-bold text-gray-900 text-lg">Invently</span>
+              <span className="font-semibold text-gray-900 text-lg">
+                Invently
+              </span>
             </div>
           ) : (
-            <div className="w-8 h-8 bg-[#8458B3] rounded-lg flex items-center justify-center mx-auto">
+            <div className="w-9 h-9 bg-[#8458B3] rounded-lg flex items-center justify-center mx-auto">
               <span className="text-white font-bold text-sm">I</span>
             </div>
           )}
@@ -85,7 +86,7 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
         </button>
 
         {/* Menu Items */}
-        <nav className="p-4 space-y-2">
+        <nav className="p-4 space-y-1">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentPage === item.id;
@@ -94,14 +95,16 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors relative ${
                   isActive
-                    ? "bg-[#e5eaf5] text-[#8458B3]"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "bg-[#8458B3] text-white"
+                    : "text-gray-700 hover:bg-gray-100"
                 } ${!isOpen && "justify-center"}`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
-                {isOpen && <span className="font-medium">{item.label}</span>}
+                {isOpen && (
+                  <span className="font-medium text-sm">{item.label}</span>
+                )}
               </button>
             );
           })}
@@ -111,12 +114,12 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
           <button
             onClick={handleLogout}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-black hover:bg-red-400 transition-colors ${
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors ${
               !isOpen && "justify-center"
             }`}
           >
-            <LogOut className="w-5 h-5 flex-shrink-0 " />
-            {isOpen && <span className="font-medium">Logout</span>}
+            <LogOut className="w-5 h-5 flex-shrink-0" />
+            {isOpen && <span className="font-medium text-sm">Logout</span>}
           </button>
         </div>
       </aside>
@@ -124,7 +127,7 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
       {/* Mobile Menu Button */}
       <button
         onClick={onToggle}
-        className="fixed top-4 left-4 z-50 lg:hidden bg-white p-2 rounded-lg shadow-md border border-gray-200"
+        className="fixed top-4 left-4 z-50 lg:hidden bg-white p-2 rounded-lg shadow-md border border-gray-200 hover:bg-gray-50 transition-colors"
       >
         {isOpen ? (
           <X className="w-6 h-6 text-gray-700" />

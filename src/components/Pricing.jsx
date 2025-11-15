@@ -4,7 +4,7 @@ import Button from "./ui/Button";
 const Pricing = () => {
   const plans = [
     {
-      name: "Starter",
+      name: "Free",
       price: "0",
       description: "Perfect for trying out Invently",
       features: [
@@ -55,7 +55,7 @@ const Pricing = () => {
   return (
     <section
       id="pricing"
-      className="relative py-24 px-6 bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden"
+      className="relative py-24 px-6 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -71,8 +71,7 @@ const Pricing = () => {
             With You
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Choose the perfect plan for your business. All plans include a
-            14-day free trial—no credit card required.
+            Choose the perfect plan for your business.
           </p>
         </div>
 
@@ -87,14 +86,6 @@ const Pricing = () => {
                   : "border border-gray-200 shadow-lg hover:shadow-xl hover:border-gray-300"
               }`}
             >
-              {plan.popular && (
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-[#8458B3] text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg">
-                    ⭐ Most Popular
-                  </span>
-                </div>
-              )}
-
               <div className="mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   {plan.name}
@@ -108,11 +99,6 @@ const Pricing = () => {
                   </span>
                   <span className="text-gray-600 text-lg">/month</span>
                 </div>
-                {plan.price === "0" && (
-                  <p className="text-sm text-gray-600 font-medium mt-2">
-                    Forever free
-                  </p>
-                )}
               </div>
 
               <Button
@@ -144,18 +130,6 @@ const Pricing = () => {
         </div>
 
         {/* FAQ or Bottom Note */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-600 mb-2">
-            Need a custom plan for your enterprise?
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 text-[#8458B3] font-semibold hover:text-[#6d3fa0] transition-colors"
-          >
-            Contact our sales team
-            <span className="text-lg">→</span>
-          </a>
-        </div>
       </div>
     </section>
   );

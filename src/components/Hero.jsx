@@ -57,23 +57,62 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative pt-20 pb-24 px-6 overflow-hidden">
-      <div className="min-h-screen w-full bg-[#f9fafb] absolute inset-0">
-        {/* Diagonal Fade Center Grid Background */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #d1d5db 1px, transparent 1px),
-              linear-gradient(to bottom, #d1d5db 1px, transparent 1px)
-            `,
-            backgroundSize: "32px 32px",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
-            maskImage:
-              "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
-          }}
-        />
+    <section className="relative pt-20 pb-32 px-6 overflow-visible bg-white">
+      {/* Modern Gradient Mesh Background */}
+      <div className="min-h-screen w-full absolute inset-0 overflow-hidden">
+        {/* Multi-layered gradient orbs */}
+        <div className="absolute inset-0">
+          {/* Primary purple gradient - top right */}
+          <div
+            className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-50"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(132, 88, 179, 0.6) 0%, rgba(132, 88, 179, 0.2) 50%, transparent 70%)",
+              filter: "blur(60px)",
+            }}
+          />
+
+          {/* Secondary blue gradient - left */}
+          <div
+            className="absolute top-1/4 -left-40 w-[500px] h-[500px] rounded-full opacity-35"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)",
+              filter: "blur(60px)",
+            }}
+          />
+
+          {/* Tertiary pink gradient - bottom right */}
+          <div
+            className="absolute bottom-0 right-1/4 w-[450px] h-[450px] rounded-full opacity-35"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(236, 72, 153, 0.5) 0%, rgba(236, 72, 153, 0.2) 50%, transparent 70%)",
+              filter: "blur(60px)",
+            }}
+          />
+
+          {/* Subtle grid pattern overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.05]"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(132, 88, 179, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(132, 88, 179, 0.4) 1px, transparent 1px)
+              `,
+              backgroundSize: "50px 50px",
+            }}
+          />
+
+          {/* Radial fade from center */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.7) 100%)",
+            }}
+          />
+        </div>
       </div>
 
       {/* Floating Icons Background */}
@@ -187,26 +226,11 @@ const Hero = () => {
                     </p>
                   </div>
                 )}
-
-                <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-gray-400" />
-                    <span>No credit card required</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-gray-400" />
-                    <span>14-day free trial</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-gray-400" />
-                    <span>Cancel anytime</span>
-                  </div>
-                </div>
               </form>
             </div>
 
             {/* Social Proof */}
-            <div className="pt-8 animate-fade-in-up animation-delay-800">
+            {/* <div className="pt-8 animate-fade-in-up animation-delay-800">
               <p className="text-sm text-gray-500 mb-4">
                 Trusted by small businesses worldwide
               </p>
@@ -224,7 +248,7 @@ const Hero = () => {
                   businesses
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

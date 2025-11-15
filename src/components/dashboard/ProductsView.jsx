@@ -7,8 +7,8 @@ import AddProduct from "../forms/AddProduct";
 
 const ProductsView = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { products, error, loading } = useProducts();
   const [showModal, setShowModal] = useState(false);
+  const { products, error, loading } = useProducts();
 
   const filteredProducts = products.filter(
     (product) =>
@@ -155,7 +155,7 @@ const ProductsView = () => {
                 ) : (
                   filteredProducts.map((product) => (
                     <tr
-                      key={product.$id}
+                      key={products.$id}
                       className="hover:bg-gray-50 transition-colors"
                     >
                       <td className="px-6 py-4">
@@ -165,7 +165,7 @@ const ProductsView = () => {
                           </div>
                           <div className="ml-3">
                             <p className="text-sm font-medium text-gray-900">
-                              {product.productName}
+                              {products.productName}
                             </p>
                           </div>
                         </div>
@@ -188,7 +188,7 @@ const ProductsView = () => {
                                 : "text-gray-900"
                           }`}
                         >
-                          {product.stock}
+                          {product.stockQuantity}
                         </span>
                       </td>
                       <td className="px-6 py-4">
