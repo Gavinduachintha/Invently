@@ -140,3 +140,5 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
 };
 
 export default Sidebar;
+
+
