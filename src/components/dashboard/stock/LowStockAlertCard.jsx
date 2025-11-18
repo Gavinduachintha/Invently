@@ -20,7 +20,9 @@ const LowStockAlertCard = ({ lowStockCount, loading, onClick }) => {
         <div>
           <div className="flex items-center gap-2 mb-2">
             <AlertTriangle className="w-5 h-5 text-white/80" />
-            <p className="text-sm text-white/80 font-medium">Low Stock Alerts</p>
+            <p className="text-sm text-white/80 font-medium">
+              Low Stock Alerts
+            </p>
           </div>
           <h2 className="text-4xl font-bold mb-1">{lowStockCount}</h2>
           <p className="text-white/70 text-sm">Items below reorder point</p>
@@ -34,7 +36,8 @@ const LowStockAlertCard = ({ lowStockCount, loading, onClick }) => {
         <div className="flex items-center gap-2">
           <Package className="w-4 h-4 text-white/70" />
           <span className="text-sm text-white/90">
-            <span className="font-semibold">{lowStockCount} items</span> need reordering
+            <span className="font-semibold">{lowStockCount} items</span> need
+            reordering
           </span>
         </div>
       </div>

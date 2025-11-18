@@ -46,7 +46,8 @@ const DeadStockCard = ({
         <div className="flex items-center gap-2">
           <Package className="w-4 h-4 text-white/70" />
           <span className="text-sm text-white/90">
-            <span className="font-semibold">{deadStockCount} items</span> not selling
+            <span className="font-semibold">{deadStockCount} items</span> not
+            selling
           </span>
         </div>
       </div>
