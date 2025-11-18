@@ -1,292 +1,79 @@
-import {
-  Package,
-  DollarSign,
-  AlertTriangle,
-  TrendingUp,
-  Clock,
-  CheckCircle,
-  XCircle,
-  Plus,
-} from "lucide-react";
-import StatCard from "../../components/ui/StatCard";
+import { Package, AlertTriangle, TrendingUp, CheckCircle } from "lucide-react";
 import Card from "../../components/ui/Card";
-import Button from "../../components/ui/Button";
-
+import TotalStockValueCard from "./stock/TotalStockValueCard";
 const DashboardHome = () => {
-  const stats = [
-    {
-      title: "Today's Sales",
-      value: "$342",
-      change: "+15.3%",
-      icon: <DollarSign className="w-6 h-6" />,
-      color: "emerald",
-    },
-    {
-      title: "Products in Stock",
-      value: "156",
-      change: "+8",
-      icon: <Package className="w-6 h-6" />,
-      color: "blue",
-    },
-    {
-      title: "Low Stock Items",
-      value: "8",
-      change: "Needs attention",
-      icon: <AlertTriangle className="w-6 h-6" />,
-      color: "orange",
-    },
-    {
-      title: "This Week",
-      value: "$1,840",
-      change: "+12.5%",
-      icon: <TrendingUp className="w-6 h-6" />,
-      color: "teal",
-    },
-  ];
-
-  const todaySales = [
-    {
-      id: "#1",
-      product: "Rice - 5kg Bag",
-      quantity: "3",
-      time: "2 hours ago",
-      amount: "$45",
-    },
-    {
-      id: "#2",
-      product: "Cooking Oil - 1L",
-      quantity: "5",
-      time: "3 hours ago",
-      amount: "$75",
-    },
-    {
-      id: "#3",
-      product: "Sugar - 2kg",
-      quantity: "2",
-      time: "5 hours ago",
-      amount: "$20",
-    },
-    {
-      id: "#4",
-      product: "Milk Powder - 400g",
-      quantity: "4",
-      time: "6 hours ago",
-      amount: "$56",
-    },
-  ];
-
-  const lowStockProducts = [
-    { name: "Rice - 5kg Bag", stock: 3, reorder: 20, status: "Critical" },
-    { name: "Cooking Oil - 1L", stock: 8, reorder: 15, status: "Low" },
-    { name: "Laundry Soap", stock: 5, reorder: 12, status: "Critical" },
-    { name: "Toothpaste", stock: 10, reorder: 20, status: "Low" },
-  ];
-
-  const quickActions = [
-    { label: "Add Sale", icon: Plus, color: "emerald" },
-    { label: "Add Product", icon: Package, color: "blue" },
-    { label: "Check Stock", icon: AlertTriangle, color: "orange" },
-    { label: "View Reports", icon: TrendingUp, color: "teal" },
-  ];
-
   return (
     <div className="space-y-6">
-      {/* Quick Actions Bar */}
-      <Card>
-        <div className="flex flex-wrap gap-3">
-          {quickActions.map((action, index) => {
-            const Icon = action.icon;
-            return (
-              <button
-                key={index}
-                className="flex items-center gap-2 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors flex-1 min-w-[150px]"
-              >
-                <div
-                  className={`w-8 h-8 rounded-lg ${
-                    action.color === "emerald"
-                      ? "bg-[#d0bdf4] text-[#8458B3]"
-                      : action.color === "blue"
-                        ? "bg-[#a0d2eb]/30 text-[#8458B3]"
-                        : action.color === "orange"
-                          ? "bg-[#a28089]/20 text-[#a28089]"
-                          : "bg-[#e5eaf5] text-[#8458B3]"
-                  } flex items-center justify-center`}
-                >
-                  <Icon className="w-4 h-4" />
-                </div>
-                <span className="font-medium text-gray-700">
-                  {action.label}
-                </span>
-              </button>
-            );
-          })}
+      {/* Welcome Section */}
+      <div className="bg-gradient-to-br from-[#8458B3] to-[#6B46C1] rounded-xl shadow-lg p-8 text-white">
+        <h1 className="text-3xl font-bold mb-2">Welcome to Invently</h1>
+        <p className="text-white/80">
+          Your inventory management dashboard. Track products, monitor stock
+          levels, and manage your business efficiently.
+        </p>
+      </div>
+
+      {/* Tips for Your Business */}
+      <Card title="Getting Started" subtitle="Quick tips to help you begin">
+        <div className="space-y-3">
+          <div className="p-3 bg-[#d0bdf4]/30 border border-[#d0bdf4] rounded-lg">
+            <div className="flex items-start gap-2">
+              <Package className="w-5 h-5 text-[#8458B3] mt-0.5" />
+              <div>
+                <p className="font-medium text-[#8458B3] text-sm">
+                  Add Your Products
+                </p>
+                <p className="text-xs text-gray-700 mt-1">
+                  Start by adding your first products to the inventory
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="p-3 bg-[#a0d2eb]/20 border border-[#a0d2eb]/50 rounded-lg">
+            <div className="flex items-start gap-2">
+              <AlertTriangle className="w-5 h-5 text-[#8458B3] mt-0.5" />
+              <div>
+                <p className="font-medium text-[#8458B3] text-sm">
+                  Monitor Stock Levels
+                </p>
+                <p className="text-xs text-gray-700 mt-1">
+                  Keep track of your inventory and get alerts for low stock
+                  items
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="p-3 bg-[#e5eaf5] border border-[#d0bdf4]/50 rounded-lg">
+            <div className="flex items-start gap-2">
+              <CheckCircle className="w-5 h-5 text-[#8458B3] mt-0.5" />
+              <div>
+                <p className="font-medium text-[#8458B3] text-sm">
+                  Manage Suppliers
+                </p>
+                <p className="text-xs text-gray-700 mt-1">
+                  Add and organize your suppliers for better inventory
+                  management
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="p-3 bg-[#d0bdf4]/20 border border-[#8458B3]/30 rounded-lg">
+            <div className="flex items-start gap-2">
+              <TrendingUp className="w-5 h-5 text-[#8458B3] mt-0.5" />
+              <div>
+                <p className="font-medium text-[#8458B3] text-sm">
+                  Track Your Business Growth
+                </p>
+                <p className="text-xs text-gray-700 mt-1">
+                  Use the stock check view to see your total inventory value and
+                  trends
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </Card>
-
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat, index) => (
-          <StatCard key={index} {...stat} />
-        ))}
-      </div>
-
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Today's Sales - Takes 2 columns */}
-        <div className="lg:col-span-2">
-          <Card
-            title="Today's Sales"
-            subtitle="Recent transactions"
-            action={
-              <Button variant="ghost" size="sm">
-                View All
-              </Button>
-            }
-          >
-            <div className="space-y-3">
-              {todaySales.map((sale) => (
-                <div
-                  key={sale.id}
-                  className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-[#8458B3]" />
-                      <p className="font-medium text-gray-900">
-                        {sale.product}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3 mt-1">
-                      <span className="text-sm text-gray-600">
-                        Qty: {sale.quantity}
-                      </span>
-                      <span className="text-xs text-gray-500 flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {sale.time}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-bold text-[#8458B3]">{sale.amount}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-
-        {/* Low Stock Alert - Takes 1 column */}
-        <Card
-          title="Stock Alert"
-          subtitle="Items running low"
-          action={
-            <span className="text-xs bg-[#a28089]/20 text-[#a28089] px-2 py-1 rounded-full font-medium">
-              {lowStockProducts.length} items
-            </span>
-          }
-        >
-          <div className="space-y-3">
-            {lowStockProducts.map((product, index) => (
-              <div
-                key={index}
-                className="p-3 bg-[#a28089]/10 border border-[#a28089]/20 rounded-lg"
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <p className="font-medium text-gray-900 text-sm">
-                    {product.name}
-                  </p>
-                  <span
-                    className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                      product.status === "Critical"
-                        ? "bg-[#a28089]/30 text-[#a28089]"
-                        : "bg-[#d0bdf4]/50 text-[#8458B3]"
-                    }`}
-                  >
-                    {product.status}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-xs text-gray-600">
-                  <span className="flex items-center gap-1">
-                    <AlertTriangle className="w-3 h-3" />
-                    Only {product.stock} left
-                  </span>
-                  <span className="text-gray-500">
-                    Reorder: {product.reorder}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </div>
-
-      {/* Business Summary */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card title="Quick Stats" subtitle="This week's overview">
-          <div className="space-y-4">
-            <div className="flex items-center justify-between py-3 border-b border-gray-100">
-              <span className="text-gray-600">Total Sales</span>
-              <span className="font-bold text-gray-900">$1,840</span>
-            </div>
-            <div className="flex items-center justify-between py-3 border-b border-gray-100">
-              <span className="text-gray-600">Items Sold</span>
-              <span className="font-bold text-gray-900">124</span>
-            </div>
-            <div className="flex items-center justify-between py-3 border-b border-gray-100">
-              <span className="text-gray-600">Average Sale</span>
-              <span className="font-bold text-gray-900">$14.84</span>
-            </div>
-            <div className="flex items-center justify-between py-3">
-              <span className="text-gray-600">Best Selling</span>
-              <span className="font-bold text-[#8458B3]">Rice - 5kg</span>
-            </div>
-          </div>
-        </Card>
-
-        <Card title="Tips for Your Business" subtitle="Helpful suggestions">
-          <div className="space-y-3">
-            <div className="p-3 bg-[#d0bdf4]/30 border border-[#d0bdf4] rounded-lg">
-              <div className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-[#8458B3] mt-0.5" />
-                <div>
-                  <p className="font-medium text-[#8458B3] text-sm">
-                    Restock Low Items
-                  </p>
-                  <p className="text-xs text-gray-700 mt-1">
-                    8 products need restocking soon
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="p-3 bg-[#a0d2eb]/20 border border-[#a0d2eb]/50 rounded-lg">
-              <div className="flex items-start gap-2">
-                <Package className="w-5 h-5 text-[#8458B3] mt-0.5" />
-                <div>
-                  <p className="font-medium text-[#8458B3] text-sm">
-                    Update Prices
-                  </p>
-                  <p className="text-xs text-gray-700 mt-1">
-                    Check supplier prices for better margins
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="p-3 bg-[#e5eaf5] border border-[#d0bdf4]/50 rounded-lg">
-              <div className="flex items-start gap-2">
-                <TrendingUp className="w-5 h-5 text-[#8458B3] mt-0.5" />
-                <div>
-                  <p className="font-medium text-[#8458B3] text-sm">
-                    Sales Growing!
-                  </p>
-                  <p className="text-xs text-gray-700 mt-1">
-                    Your sales are up 15% from last week
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Card>
-      </div>
+      <TotalStockValueCard totalValue={125} totalProducts={10} loading={false} />
     </div>
   );
 };

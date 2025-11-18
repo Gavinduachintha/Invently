@@ -4,6 +4,7 @@ import useStock from "../../hooks/useStock";
 import StockStats from "./stock/StockStats";
 import StockFilters from "./stock/StockFilters";
 import StockTable from "./stock/StockTable";
+import TotalStockValueCard from "./stock/TotalStockValueCard";
 
 const StockCheckView = () => {
   const { products, error, loading, stockStats, getProductsByStatus } =
@@ -118,6 +119,15 @@ const StockCheckView = () => {
           </div>
           <p className="text-red-700 text-sm mt-1">{error}</p>
         </div>
+      )}
+
+      {/* Total Stock Value Card */}
+      {!error && (
+        <TotalStockValueCard
+          totalValue={stockStats.totalValue}
+          totalProducts={stockStats.totalProducts}
+          loading={loading}
+        />
       )}
 
       {/* Stats Cards */}

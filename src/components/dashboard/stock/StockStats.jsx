@@ -41,14 +41,6 @@ const StockStats = ({ stats, loading }) => {
       textColor: "text-[#a28089]",
     },
     {
-      title: "Total Inventory Value",
-      value: `$${stats.totalValue.toFixed(2)}`,
-      icon: DollarSign,
-      bgColor: "bg-[#8458B3]/20",
-      iconColor: "text-[#8458B3]",
-      textColor: "text-[#8458B3]",
-    },
-    {
       title: "Low Stock Value",
       value: `$${stats.lowStockValue.toFixed(2)}`,
       icon: DollarSign,
@@ -60,8 +52,8 @@ const StockStats = ({ stats, loading }) => {
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {[1, 2, 3, 4, 5, 6].map((i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+        {[1, 2, 3, 4, 5].map((i) => (
           <div
             key={i}
             className="bg-white rounded-lg border border-gray-200 p-4 animate-pulse"
@@ -74,7 +66,7 @@ const StockStats = ({ stats, loading }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
       {statCards.map((stat, index) => {
         const Icon = stat.icon;
         return (
