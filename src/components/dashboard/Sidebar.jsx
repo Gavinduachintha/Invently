@@ -10,6 +10,8 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
+  SidebarClose,
+  SidebarOpen,
 } from "lucide-react";
 import { Account, Client } from "appwrite";
 import { useNavigate } from "react-router-dom";
@@ -38,6 +40,9 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
       console.error("Logout failed:", error);
     }
   };
+  const navigateToHome = () => {
+    navigate("/");
+  }
 
   return (
     <>
@@ -51,16 +56,16 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full bg-white border-r border-gray-200 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 h-full bg-purple-600/10 border-gray-200 z-50 transition-all duration-300 ${
           isOpen ? "w-64" : "w-20"
         }`}
       >
         {/* Logo Section */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
+        <div className="h-16 flex items-center justify-between px-4  border-red-200">
           {isOpen ? (
             <div className="flex items-center gap-2.5">
               <div className="w-9 h-9 bg-[#8458B3] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">I</span>
+                <span className="text-white font-bold text-sm" >I</span>
               </div>
               <span className="font-semibold text-gray-900 text-lg">
                 Invently
@@ -73,20 +78,22 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
           )}
         </div>
 
-        {/* Toggle Button */}
-        <button
-          onClick={onToggle}
-          className="absolute -right-3 top-20 bg-white border border-gray-200 rounded-full p-1.5 shadow-sm hover:bg-gray-50 transition-colors hidden lg:block"
-        >
-          {isOpen ? (
-            <ChevronLeft className="w-4 h-4 text-gray-600" />
-          ) : (
-            <ChevronRight className="w-4 h-4 text-gray-600" />
-          )}
-        </button>
-
         {/* Menu Items */}
         <nav className="p-4 space-y-1">
+          {/* Toggle Button */}
+          <button
+            onClick={onToggle}
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors relative text-gray-700 hover:bg-gray-100 ${
+              !isOpen && "justify-center"
+            }`}
+          >
+            {isOpen ? (
+              <SidebarClose className="w-5 h-5 flex-shrink-0" />
+            ) : (
+              <SidebarOpen className="w-5 h-5 flex-shrink-0" />
+            )}
+          </button>
+
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentPage === item.id;
@@ -140,5 +147,3 @@ const Sidebar = ({ currentPage, onNavigate, isOpen, onToggle }) => {
 };
 
 export default Sidebar;
-
-

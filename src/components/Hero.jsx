@@ -60,6 +60,24 @@ const Hero = () => {
     <section className="relative pt-20 pb-32 px-6 overflow-visible bg-white">
       {/* Modern Gradient Mesh Background */}
       <div className="min-h-screen w-full absolute inset-0 overflow-hidden">
+        <div className="min-h-screen w-full bg-white relative">
+  {/*  Diagonal Cross Grid Top Background */}
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: `
+        linear-gradient(45deg, transparent 49%, #e5e7eb 49%, #e5e7eb 51%, transparent 51%),
+        linear-gradient(-45deg, transparent 49%, #e5e7eb 49%, #e5e7eb 51%, transparent 51%)
+      `,
+      backgroundSize: "40px 40px",
+       WebkitMaskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
+          maskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
+    }}
+  />
+  {/* Your Content/Components */}
+</div>
         {/* Multi-layered gradient orbs */}
         <div className="absolute inset-0">
           {/* Primary purple gradient - top right */}
