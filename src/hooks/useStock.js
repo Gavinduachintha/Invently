@@ -39,6 +39,7 @@ const useStock = () => {
       inStock: 0,
       totalValue: 0,
       lowStockValue: 0,
+      totalQuantity: 0,
     };
 
     products.forEach((product) => {
@@ -48,6 +49,9 @@ const useStock = () => {
 
       // Calculate total inventory value
       stats.totalValue += quantity * price;
+
+      // Calculate total quantity
+      stats.totalQuantity += quantity;
 
       // Categorize stock levels
       if (quantity === 0) {

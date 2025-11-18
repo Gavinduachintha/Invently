@@ -5,6 +5,7 @@ import StockStats from "./stock/StockStats";
 import StockFilters from "./stock/StockFilters";
 import StockTable from "./stock/StockTable";
 import TotalStockValueCard from "./stock/TotalStockValueCard";
+import TotalStockAmount from "./stock/TotalStockAmount";
 
 const StockCheckView = () => {
   const { products, error, loading, stockStats, getProductsByStatus } =
@@ -121,13 +122,20 @@ const StockCheckView = () => {
         </div>
       )}
 
-      {/* Total Stock Value Card */}
+      {/* Total Stock Cards */}
       {!error && (
-        <TotalStockValueCard
-          totalValue={stockStats.totalValue}
-          totalProducts={stockStats.totalProducts}
-          loading={loading}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <TotalStockValueCard
+            totalValue={stockStats.totalValue}
+            totalProducts={stockStats.totalProducts}
+            loading={loading}
+          />
+          <TotalStockAmount
+            totalQuantity={stockStats.totalQuantity}
+            totalProducts={stockStats.totalProducts}
+            loading={loading}
+          />
+        </div>
       )}
 
       {/* Stats Cards */}

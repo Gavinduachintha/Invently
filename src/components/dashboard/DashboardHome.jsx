@@ -1,6 +1,7 @@
 import { Package, AlertTriangle, TrendingUp, CheckCircle } from "lucide-react";
 import Card from "../../components/ui/Card";
 import TotalStockValueCard from "./stock/TotalStockValueCard";
+import TotalStockAmount from "./stock/TotalStockAmount";
 const DashboardHome = () => {
   return (
     <div className="space-y-6">
@@ -73,7 +74,18 @@ const DashboardHome = () => {
           </div>
         </div>
       </Card>
-      <TotalStockValueCard totalValue={125} totalProducts={10} loading={false} />
+      <div className="grid grid-cols-4 gap-0.5">
+        <TotalStockValueCard
+          totalValue={125}
+          totalProducts={10}
+          loading={false}
+        />
+        <TotalStockAmount
+          totalQuantity={500}
+          totalProducts={10}
+          loading={false}
+        />
+      </div>
     </div>
   );
 };
