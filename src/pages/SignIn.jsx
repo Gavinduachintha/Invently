@@ -8,88 +8,22 @@ import Divider from "../components/ui/Divider";
 import SocialLogin from "../components/auth/SocialLogin";
 import { Client, Account } from "appwrite";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import useSignIn from "../hooks/useSignIn";
+import toast, { Toaster } from "react-hot-toast";
 
 const client = new Client()
-  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Your project ID
-  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT); // Your API Endpoint
-const account = new Account(client);
+  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID)
+  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT);
 
 const SignIn = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    rememberMe: false,
-  });
-  const navigate = useNavigate();
-
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  };
-
-  const validate = () => {
-    const newErrors = {};
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
-
-    return newErrors;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const result = await account.createEmailPasswordSession(
-        formData.email,
-        formData.password
-      );
-      console.log("Login successful:", result);
-      toast.success("Signed in successfully!");
-      const user = await account.get();
-      console.log("User data:", user);
-      console.log("Login in as: ",user);
-      localStorage.setItem("user", JSON.stringify(user));
-      
-      setTimeout(() => {
-        navigate("/dashboard",{state: { user }});
-      }, 500);
-    } catch (error) {
-      console.log(error.message);
-      if (error.code === 401) {
-        setErrors({ general: "Invalid email or password" });
-      } else {
-        setErrors({ general: "An error occurred. Please try again." });
-      }
-    }
-  };
+  const { formData, errors, loading, handleChange, handleSubmit } =
+    useSignIn(client);
 
   return (
     <AuthLayout
       title="Welcome Back"
       subtitle="Sign in to your Invently account"
     >
-      <toast />
       <form onSubmit={handleSubmit}>
         {/* Split Layout Container */}
         <div className="grid md:grid-cols-2 gap-12">
@@ -156,9 +90,10 @@ const SignIn = () => {
                   variant="primary"
                   size="lg"
                   fullWidth
+                  disabled={loading}
                   icon={<ArrowRight className="w-5 h-5" />}
                 >
-                  Sign In with Email
+                  {loading ? "Signing In..." : "Sign In with Email"}
                 </Button>
 
                 <div className="relative">
@@ -191,6 +126,7 @@ const SignIn = () => {
           </p>
         </div>
       </form>
+      <Toaster />
     </AuthLayout>
   );
 };

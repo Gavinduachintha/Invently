@@ -11,17 +11,34 @@ import {
 import { useState } from "react";
 import useSuppliers from "../../hooks/useSuppliers";
 import Addsupplier from "../forms/Addsupplier";
+import UpdateSupplier from "../forms/UpdateSupplier";
 import Warningcard from "../ui/Warningcard";
 
 const SuppliersView = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { suppliers, error, loading } = useSuppliers();
   const [showModal, setShowModal] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [selectedSupplier, setSelectedSupplier] = useState(null);
   const [showWarning, setShowWarning] = useState(false);
 
   console.log("SuppliersView - suppliers:", suppliers);
   console.log("SuppliersView - error:", error);
   console.log("SuppliersView - loading:", loading);
+
+  // Function to handle opening the update modal with supplier data
+  const handleEditClick = (supplier) => {
+    setSelectedSupplier(supplier);
+    setShowUpdateModal(true);
+  };
+
+  // Function to handle the update submission
+  const handleUpdateSupplier = (updatedSupplier) => {
+    // Here you would typically call an API to update the supplier
+    // For now, we'll just log it
+    console.log("Updating supplier:", updatedSupplier);
+    // You can add your update logic here (e.g., call an API endpoint)
+  };
 
   const filteredSuppliers = suppliers.filter(
     (supplier) =>
@@ -39,7 +56,7 @@ const SuppliersView = () => {
 
   return (
     <>
-      {/* Modal */}
+      {/* Add Supplier Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/10 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg w-full max-w-2xl m-4">
@@ -47,6 +64,24 @@ const SuppliersView = () => {
           </div>
         </div>
       )}
+
+      {/* Update Supplier Modal */}
+      {showUpdateModal && (
+        <div className="fixed inset-0 bg-black/10 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg w-full max-w-2xl m-4">
+            <UpdateSupplier
+              onClose={() => {
+                setShowUpdateModal(false);
+                setSelectedSupplier(null);
+              }}
+              supplierData={selectedSupplier}
+              onUpdate={handleUpdateSupplier}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Warning Modal */}
       {showWarning && (
         <div className="fixed inset-0 bg-gray-500/70 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg  max-w-2xl m-4">
@@ -235,6 +270,7 @@ const SuppliersView = () => {
                         <td className="px-6 py-4 text-right">
                           <div className="flex items-center justify-end gap-2">
                             <button
+                              onClick={() => handleEditClick(supplier)}
                               className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                               title="Edit supplier"
                             >

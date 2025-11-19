@@ -25,7 +25,9 @@ export const ProtectedRoute = ({children}) => {
     checkSession();
   }, []);
   if (loading) {
-    return <div>Loading...</div>;
+    return  <div className="fixed inset-0 flex items-center justify-center bg-white/40 z-50">
+      <span className="loading loading-spinner loading-lg"></span>
+    </div>
   }
 
   return authenticated ? children : <Navigate to="/signin" replace />;
