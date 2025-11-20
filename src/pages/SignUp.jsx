@@ -8,6 +8,8 @@ import Divider from "../components/ui/Divider";
 import SocialLogin from "../components/auth/SocialLogin";
 import { Client, Account, ID, Databases, Permission, Role } from "appwrite";
 import { useNavigate } from "react-router-dom";
+import initiateGoogleAuth from "../hooks/useGoogleAuth";
+
 const client = new Client()
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID) // Your project ID
   .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT); // Your API Endpoint
@@ -206,7 +208,7 @@ const SignUp = () => {
                   </div>
                 </div>
 
-                <SocialLogin />
+                <SocialLogin onGoogleLogin={initiateGoogleAuth} />
               </div>
             </div>
 

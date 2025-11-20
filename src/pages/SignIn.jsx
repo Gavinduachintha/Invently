@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 import AuthLayout from "../components/auth/AuthLayout";
 import Input from "../components/ui/Input";
@@ -10,6 +10,8 @@ import { Client, Account } from "appwrite";
 import { useNavigate } from "react-router-dom";
 import useSignIn from "../hooks/useSignIn";
 import toast, { Toaster } from "react-hot-toast";
+import initiateGoogleAuth from "../hooks/useGoogleAuth";
+import useOAuthCallback from "../hooks/useOAuthCallback";
 
 const client = new Client()
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID)
@@ -18,6 +20,19 @@ const client = new Client()
 const SignIn = () => {
   const { formData, errors, loading, handleChange, handleSubmit } =
     useSignIn(client);
+  const { isChecking } = useOAuthCallback();
+
+  // Show loading while checking OAuth callback
+  if (isChecking) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-white/40 z-50">
+        <div className="text-center">
+          <span className="loading loading-spinner loading-lg"></span>
+          <p className="mt-4 text-gray-600">Completing sign in...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <AuthLayout
@@ -107,7 +122,7 @@ const SignIn = () => {
                   </div>
                 </div>
 
-                <SocialLogin />
+                <SocialLogin onGoogleLogin={initiateGoogleAuth} />
               </div>
             </div>
           </div>

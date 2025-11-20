@@ -1,6 +1,8 @@
-const SocialLogin = () => {
+const SocialLogin = ({ onGoogleLogin }) => {
   const handleGoogleLogin = () => {
-    console.log("Google login clicked");
+    if (onGoogleLogin) {
+      onGoogleLogin();
+    }
   };
 
   const handleMicrosoftLogin = () => {
@@ -10,6 +12,7 @@ const SocialLogin = () => {
   return (
     <div className="space-y-3">
       <button
+        type="button"
         onClick={handleGoogleLogin}
         className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
       >
@@ -35,6 +38,7 @@ const SocialLogin = () => {
       </button>
 
       <button
+        type="button"
         onClick={handleMicrosoftLogin}
         className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
       >
